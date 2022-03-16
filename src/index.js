@@ -27,6 +27,7 @@ import "assets/css/bootstrap.min.css";
 import "assets/scss/now-ui-kit.scss?v=1.5.0";
 import "assets/demo/demo.css?v=1.5.0";
 import "assets/demo/nucleo-icons-page-styles.css?v=1.5.0";
+import "./index.css";
 // pages for this kit
 import Index from "views/index/LandingPage";
 import LoginPage from "views/auth/LoginPage.js";
@@ -49,9 +50,15 @@ ReactDOM.render(
       />
       
       <Route
+        path="/posts/:category_id"
+        render={(props) => <Posts {...props} />}
+      />
+      
+      <Route
         path="/posts"
         render={(props) => <Posts {...props} />}
       />
+      
       <Redirect to="/index" />
       <Redirect from="/" to="/index" />
     </Switch>
