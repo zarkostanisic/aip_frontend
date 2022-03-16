@@ -102,7 +102,7 @@ class LandingPage extends Component {
                  nextLabel="next"
                  onPageChange={this.handlePageClick}
                  pageRangeDisplayed={this.state.per_page}
-                 pageCount={this.state.total}
+                 pageCount={Math.ceil(this.state.total / this.state.perPage)}
                  previousLabel="previous"
                  renderOnZeroPageCount={null}
                  className="pagination justify-content-center"

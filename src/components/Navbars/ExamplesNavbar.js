@@ -49,7 +49,6 @@ class ExamplesNavbar extends Component {
       document.documentElement.scrollTop < 400 ||
       document.body.scrollTop < 400
     ) {
-      this.getCategories();
       this.setState({
         navbarColor: 'navbar-transparent'
       });
@@ -69,7 +68,7 @@ class ExamplesNavbar extends Component {
   render(){
     const categories = this.state.categories.map((category) => {
       return(
-        <DropdownItem tag={Link} to={'/posts/' + category.id}>
+        <DropdownItem tag={Link} to={'/posts/' + category.id} key={category.id}>
           {category.name}
         </DropdownItem>
       );
