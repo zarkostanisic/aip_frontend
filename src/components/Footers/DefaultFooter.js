@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React from "react";
+import {Link} from "react-router-dom";
 
 // reactstrap components
 import { Container } from "reactstrap";
@@ -14,12 +15,7 @@ function DefaultFooter() {
           <nav>
             <ul>
               <li>
-                <a
-                  href="#"
-                  target="_blank"
-                >
-                  AIP
-                </a>
+                <Link to="/">AIP</Link>
               </li>
               <li>
                 <a
@@ -30,12 +26,7 @@ function DefaultFooter() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  target="_blank"
-                >
-                  Blog
-                </a>
+                <Link to="/posts">Blog</Link>
               </li>
             </ul>
           </nav>

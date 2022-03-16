@@ -30,6 +30,7 @@ import "assets/demo/nucleo-icons-page-styles.css?v=1.5.0";
 // pages for this kit
 import Index from "views/index/LandingPage";
 import LoginPage from "views/auth/LoginPage.js";
+import Posts from "views/posts/Posts.js";
 
 const store = createStore(
    reducer,
@@ -45,6 +46,11 @@ ReactDOM.render(
       <Route
         path="/login"
         render={(props) => <LoginPage {...props} />}
+      />
+      
+      <Route
+        path="/posts"
+        render={(props) => <Posts {...props} />}
       />
       <Redirect to="/index" />
       <Redirect from="/" to="/index" />

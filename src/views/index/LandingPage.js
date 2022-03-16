@@ -10,6 +10,11 @@ import {
   Container,
   Row,
   Col,
+  Card,
+  CardBody,
+  CardImg,
+  CardTitle,
+  CardText
 } from "reactstrap";
 
 // core components
