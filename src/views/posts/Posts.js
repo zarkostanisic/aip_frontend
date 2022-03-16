@@ -29,7 +29,7 @@ class LandingPage extends Component {
     posts: [],
     page: 1,
     total: 0,
-    perPage: 1
+    perPage: 12
   };
   
   getPosts = (page = 1) => {
@@ -101,7 +101,7 @@ class LandingPage extends Component {
                  breakLabel="..."
                  nextLabel="next"
                  onPageChange={this.handlePageClick}
-                 pageRangeDisplayed={this.state.per_page}
+                 pageRangeDisplayed={5}
                  pageCount={Math.ceil(this.state.total / this.state.perPage)}
                  previousLabel="previous"
                  renderOnZeroPageCount={null}
