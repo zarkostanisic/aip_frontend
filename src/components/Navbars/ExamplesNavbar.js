@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
+import API from '../../api/api';
+
 // reactstrap components
 import {
   Collapse,
@@ -20,8 +22,19 @@ class ExamplesNavbar extends Component {
   
   state = {
     navbarColor: 'navbar-transparent',
-    collapseOpen: false
+    collapseOpen: false,
+    categories: []
   }
+  
+  getCategories = (page = 1) => {
+    
+    var results = API.get('api/app/categories')
+      .then(results => {
+        this.setState({
+          categories: results.data.data
+        });
+      });
+  } 
   
   updateNavbarColor = () => {
     
@@ -36,6 +49,7 @@ class ExamplesNavbar extends Component {
       document.documentElement.scrollTop < 400 ||
       document.body.scrollTop < 400
     ) {
+      this.getCategories();
       this.setState({
         navbarColor: 'navbar-transparent'
       });
@@ -43,6 +57,8 @@ class ExamplesNavbar extends Component {
   };
   
   componentDidMount(){
+    this.getCategories();
+    
     window.addEventListener("scroll", this.updateNavbarColor);
   }
   
@@ -51,6 +67,14 @@ class ExamplesNavbar extends Component {
   }
   
   render(){
+    const categories = this.state.categories.map((category) => {
+      return(
+        <DropdownItem tag={Link} to={'/posts/' + category.id}>
+          {category.name}
+        </DropdownItem>
+      );
+    });
+    
     return (
       <>
         {this.state.collapseOpen ? (
@@ -78,9 +102,7 @@ class ExamplesNavbar extends Component {
                 <span className="button-bar"></span>
               </DropdownToggle>
               <DropdownMenu aria-labelledby="navbarDropdown">
-                <DropdownItem tag={Link} to="/posts/1">
-                  Category
-                </DropdownItem>
+                {categories}
               </DropdownMenu>
             </UncontrolledDropdown>
             <div className="navbar-translate">
