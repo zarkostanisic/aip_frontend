@@ -91,7 +91,6 @@ class ExamplesNavbar extends Component {
               <DropdownToggle
                 caret
                 data-toggle="dropdown"
-                href="#pablo"
                 id="navbarDropdown"
                 tag="a"
                 onClick={(e) => e.preventDefault()}
@@ -106,8 +105,7 @@ class ExamplesNavbar extends Component {
             </UncontrolledDropdown>
             <div className="navbar-translate">
               <NavbarBrand
-                href="#"
-                target="_blank"
+                href="/"
                 id="navbar-brand"
               >
                 AIP
