@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Pagination from '../../components/Pagination/Pagination';
 import API from '../../api/api';
+import "react-image-gallery/styles/css/image-gallery.css";
 
 // reactstrap components
 import {
@@ -23,7 +24,7 @@ import {
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
-import Carousel from './Carousel';
+import ImageGallery from 'react-image-gallery';
 
 class Post extends Component {
   state = {
@@ -57,27 +58,10 @@ class Post extends Component {
   }
   
   render(){
-    // const items = [
-    //   {
-    //     src: require("assets/img/bg1.jpg").default,
-    //     altText: "Nature, United States",
-    //     caption: "Nature, United States",
-    //   },
-    //   {
-    //     src: require("assets/img/bg3.jpg").default,
-    //     altText: "Somewhere Beyond, United States",
-    //     caption: "Somewhere Beyond, United States",
-    //   },
-    //   {
-    //     src: require("assets/img/bg4.jpg").default,
-    //     altText: "Yellowstone National Park, United States",
-    //     caption: "Yellowstone National Park, United States",
-    //   },
-    // ];
     let items = [];
     if(this.state.post){
       items = this.state.post.images.map((image) => {
-        return {src: image.path, altTxt: '', caption: ''};
+        return {original: image.path, thumbnail: image.path};
       });
     }
     
@@ -98,7 +82,7 @@ class Post extends Component {
           
           <div className="section">
             <Container>
-              <Carousel items={items}/>
+              <ImageGallery items={items} />
             </Container>
           </div>
           <DefaultFooter classes="footer-default"/>
