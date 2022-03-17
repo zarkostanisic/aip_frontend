@@ -46,8 +46,7 @@ class LoginPage extends Component {
         });
     } else {
       this.validator.showMessages();
-      // rerender to show messages for the first time
-      // you can use the autoForceUpdate option to do this automatically`
+
       this.forceUpdate();
     }
   };
@@ -178,7 +177,7 @@ class LoginPage extends Component {
                         ></Input>
                       </InputGroup>
                       <InputGroup>
-                        {this.validator.message('password', this.state.password, 'required|alpha')}
+                        {this.validator.message('password', this.state.password, 'required|alpha_num')}
                       </InputGroup>
                       <InputGroup>
                       </InputGroup>

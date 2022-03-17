@@ -18,12 +18,7 @@ function DefaultFooter(props) {
                 <Link to="/">AIP</Link>
               </li>
               <li>
-                <a
-                  href=""
-                  target="_blank"
-                >
-                  O nama
-                </a>
+                <Link to="/about">O nama</Link>
               </li>
               <li>
                 <Link to="/posts">Blog</Link>
@@ -32,12 +27,7 @@ function DefaultFooter(props) {
           </nav>
           <div className="copyright" id="copyright">
             © {new Date().getFullYear()},
-            <a
-              href="#"
-              target="_blank"
-            >
-              &nbsp;AIP
-            </a>
+            <Link to="/">&nbsp;AIP</Link>
             .
           </div>
         </Container>

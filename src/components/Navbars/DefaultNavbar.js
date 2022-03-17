@@ -140,7 +140,7 @@ class DefaultNavbar extends Component {
                 </NavItem>
                 
                 <NavItem>
-                  <NavLink to="/index" tag={Link}>
+                  <NavLink to="/about" tag={Link}>
                       Onama
                     </NavLink>
                 </NavItem>
