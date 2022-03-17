@@ -12,25 +12,7 @@ import {
 
 // core components
 
-const items = [
-  {
-    src: require("assets/img/bg1.jpg").default,
-    altText: "Nature, United States",
-    caption: "Nature, United States",
-  },
-  {
-    src: require("assets/img/bg3.jpg").default,
-    altText: "Somewhere Beyond, United States",
-    caption: "Somewhere Beyond, United States",
-  },
-  {
-    src: require("assets/img/bg4.jpg").default,
-    altText: "Yellowstone National Park, United States",
-    caption: "Yellowstone National Park, United States",
-  },
-];
-
-function CarouselSection() {
+function CarouselSection(props) {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [animating, setAnimating] = React.useState(false);
   const onExiting = () => {
@@ -41,12 +23,12 @@ function CarouselSection() {
   };
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === props.items.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   };
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? props.items.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
   const goToIndex = (newIndex) => {
@@ -65,11 +47,11 @@ function CarouselSection() {
                 previous={previous}
               >
                 <CarouselIndicators
-                  items={items}
+                  items={props.items}
                   activeIndex={activeIndex}
                   onClickHandler={goToIndex}
                 />
-                {items.map((item) => {
+                {props.items.map((item) => {
                   return (
                     <CarouselItem
                       onExiting={onExiting}

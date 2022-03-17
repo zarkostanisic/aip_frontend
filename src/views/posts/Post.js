@@ -26,8 +26,24 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 import Carousel from './Carousel';
 
 class Post extends Component {
+  state = {
+    post: null
+  }
+  
+  getPost = () => {
+    
+    var result = API.get('api/app/post/' + this.props.match.params.id)
+      .then(result => {
+        
+        this.setState({
+          post: result.data.data
+        });
+      });
+  } 
   
   componentDidMount(){
+    this.getPost();
+    
     document.body.classList.add("landing-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
@@ -41,6 +57,29 @@ class Post extends Component {
   }
   
   render(){
+    // const items = [
+    //   {
+    //     src: require("assets/img/bg1.jpg").default,
+    //     altText: "Nature, United States",
+    //     caption: "Nature, United States",
+    //   },
+    //   {
+    //     src: require("assets/img/bg3.jpg").default,
+    //     altText: "Somewhere Beyond, United States",
+    //     caption: "Somewhere Beyond, United States",
+    //   },
+    //   {
+    //     src: require("assets/img/bg4.jpg").default,
+    //     altText: "Yellowstone National Park, United States",
+    //     caption: "Yellowstone National Park, United States",
+    //   },
+    // ];
+    let items = [];
+    if(this.state.post){
+      items = this.state.post.images.map((image) => {
+        return {src: image.path, altTxt: '', caption: ''};
+      });
+    }
     
     return (
       <>
@@ -50,16 +89,16 @@ class Post extends Component {
           
           <div className="section">
             <Container>
-              <h3 className="title">Title</h3>
+              <h3 className="title">{this.state.post?.title}</h3>
               <h5 className="description">
-                I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.
+                {this.state.post?.text}
               </h5>
             </Container>
           </div>
           
           <div className="section">
             <Container>
-              <Carousel/>
+              <Carousel items={items}/>
             </Container>
           </div>
           <DefaultFooter classes="footer-default"/>

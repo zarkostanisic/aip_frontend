@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Pagination from '../../components/Pagination/Pagination';
 import API from '../../api/api';
+import { Link } from "react-router-dom";
 
 // reactstrap components
 import {
@@ -82,15 +83,17 @@ class Posts extends Component {
     const posts = this.state.posts.map((post) => {
       return(
         <Col md="4" key={post.id}>
-          <Card>
-            <div className="postImg" style={{ backgroundImage: `url('${post.images[0]?.path}')` }}></div>
-            <CardBody>
-              <CardTitle tag="h4">{post.title}</CardTitle>
-              <CardText>
-                {post.text}
-              </CardText>
-            </CardBody>
-          </Card>
+          
+            <Card>
+              <div className="postImg" style={{ backgroundImage: `url('${post.images[0]?.path}')` }}></div>
+              <CardBody>
+                <CardTitle tag="h4">{post.title}</CardTitle>
+                <CardText>
+                  {post.text}
+                </CardText>
+                <Link to={'/post/' + post.id}>Procitaj</Link>
+              </CardBody>
+            </Card>
         </Col>
       );
     });
