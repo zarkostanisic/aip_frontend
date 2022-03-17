@@ -66,6 +66,13 @@ class LandingPage extends Component {
     this.getPosts();
   }
   
+  componentDidUpdate = (prevProps) => {
+    if(this.props.match.params.category_id !== prevProps.match.params.category_id ) {
+
+      this.getPosts();
+   };
+  };
+  
   componentWillUnmount(){
     document.body.classList.remove("landing-page");
     document.body.classList.remove("sidebar-collapse");
