@@ -5,7 +5,7 @@ import { Button, Container } from "reactstrap";
 
 // core components
 
-function LandingPageHeader() {
+function IndexHeader() {
   let pageHeader = React.createRef();
 
   React.useEffect(() => {
@@ -68,4 +68,4 @@ function LandingPageHeader() {
   );
 }
 
-export default LandingPageHeader;
+export default IndexHeader;

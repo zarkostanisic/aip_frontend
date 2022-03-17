@@ -7,10 +7,10 @@ import { Container } from "reactstrap";
 
 // core components
 
-function DefaultFooter() {
+function DefaultFooter(props) {
   return (
     <>
-      <footer className="footer footer-default">
+      <footer className={'footer ' + props.classes}>
         <Container>
           <nav>
             <ul>

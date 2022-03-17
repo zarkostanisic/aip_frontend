@@ -29,7 +29,7 @@ import "assets/demo/demo.css?v=1.5.0";
 import "assets/demo/nucleo-icons-page-styles.css?v=1.5.0";
 import "./index.css";
 // pages for this kit
-import Index from "views/index/LandingPage";
+import IndexPage from "views/index/IndexPage";
 import LoginPage from "views/auth/LoginPage.js";
 import Posts from "views/posts/Posts.js";
 
@@ -43,7 +43,7 @@ ReactDOM.render(
   <Provider store = {store}>
   <BrowserRouter>
     <Switch>
-      <Route path="/index" render={(props) => <Index {...props} />} />
+      <Route path="/index" render={(props) => <IndexPage {...props} />} />
       <Route
         path="/login"
         render={(props) => <LoginPage {...props} />}

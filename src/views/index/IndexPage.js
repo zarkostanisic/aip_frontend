@@ -10,14 +10,19 @@ import {
   Container,
   Row,
   Col,
+  Card,
+  CardBody,
+  CardImg,
+  CardTitle,
+  CardText
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import LandingPageHeader from "components/Headers/LandingPageHeader.js";
+import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
+import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
-function LandingPage() {
+function IndexPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
   React.useEffect(() => {
@@ -33,20 +38,16 @@ function LandingPage() {
   }, []);
   return (
     <>
-      <ExamplesNavbar />
+      <DefaultNavbar />
       <div className="wrapper">
-        <LandingPageHeader />
+        <IndexPageHeader />
         <div className="section section-about-us">
           <Container>
             <Row>
               <Col className="ml-auto mr-auto text-center" md="8">
-                <h2 className="title">Who we are?</h2>
+                <h2 className="title">Ko smo mi?</h2>
                 <h5 className="description">
-                  According to the National Oceanic and Atmospheric
-                  Administration, Ted, Scambos, NSIDClead scentist, puts the
-                  potentially record low maximum sea ice extent tihs year down
-                  to low ice extent in the Pacific and a late drop in ice extent
-                  in the Barents Sea.
+                  Neki text:)
                 </h5>
               </Col>
             </Row>
@@ -82,7 +83,7 @@ function LandingPage() {
                     className="image-container image-right"
                     style={{
                       backgroundImage:
-                        "url(" + require("assets/img/bg1.jpg").default + ")",
+                        "url(" + require("assets/img/visocica.jpg").default + ")",
                     }}
                   ></div>
                   <h3>
@@ -125,7 +126,7 @@ function LandingPage() {
         </div>
         <div className="section section-team text-center">
           <Container>
-            <h2 className="title">Here is our team</h2>
+            <h2 className="title">Tim</h2>
             <div className="team">
               <Row>
                 <Col md="4">
@@ -135,16 +136,10 @@ function LandingPage() {
                       className="rounded-circle img-fluid img-raised"
                       src={require("assets/img/avatar.jpg").default}
                     ></img>
-                    <h4 className="title">Romina Hadid</h4>
-                    <p className="category text-info">Model</p>
+                    <h4 className="title">Text</h4>
+                    <p className="category text-info">Text</p>
                     <p className="description">
-                      You can write here details about one of your team members.
-                      You can give more details about what they do. Feel free to
-                      add some{" "}
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        links
-                      </a>{" "}
-                      for people to be able to follow them outside the site.
+                      Text
                     </p>
                     <Button
                       className="btn-icon btn-round"
@@ -179,16 +174,10 @@ function LandingPage() {
                       className="rounded-circle img-fluid img-raised"
                       src={require("assets/img/ryan.jpg").default}
                     ></img>
-                    <h4 className="title">Ryan Tompson</h4>
-                    <p className="category text-info">Designer</p>
+                    <h4 className="title">Text</h4>
+                    <p className="category text-info">Text</p>
                     <p className="description">
-                      You can write here details about one of your team members.
-                      You can give more details about what they do. Feel free to
-                      add some{" "}
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        links
-                      </a>{" "}
-                      for people to be able to follow them outside the site.
+                      Text
                     </p>
                     <Button
                       className="btn-icon btn-round"
@@ -215,16 +204,10 @@ function LandingPage() {
                       className="rounded-circle img-fluid img-raised"
                       src={require("assets/img/eva.jpg").default}
                     ></img>
-                    <h4 className="title">Eva Jenner</h4>
-                    <p className="category text-info">Fashion</p>
+                    <h4 className="title">Text</h4>
+                    <p className="category text-info">Text</p>
                     <p className="description">
-                      You can write here details about one of your team members.
-                      You can give more details about what they do. Feel free to
-                      add some{" "}
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        links
-                      </a>{" "}
-                      for people to be able to follow them outside the site.
+                      Text
                     </p>
                     <Button
                       className="btn-icon btn-round"
@@ -258,7 +241,7 @@ function LandingPage() {
         </div>
         <div className="section section-contact-us text-center">
           <Container>
-            <h2 className="title">Want to work with us?</h2>
+            <h2 className="title">Kontakt?</h2>
             <p className="description">Your project is very important to us.</p>
             <Row>
               <Col className="text-center ml-auto mr-auto" lg="6" md="8">
@@ -321,10 +304,10 @@ function LandingPage() {
             </Row>
           </Container>
         </div>
-        <DefaultFooter />
+        <DefaultFooter classes="footer-default"/>
       </div>
     </>
   );
 }
 
-export default LandingPage;
+export default IndexPage;

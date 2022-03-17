@@ -18,7 +18,7 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
-class ExamplesNavbar extends Component {
+class DefaultNavbar extends Component {
   
   state = {
     navbarColor: 'navbar-transparent',
@@ -199,4 +199,4 @@ class ExamplesNavbar extends Component {
   }
 }
 
-export default ExamplesNavbar;
+export default DefaultNavbar;

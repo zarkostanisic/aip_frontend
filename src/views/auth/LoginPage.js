@@ -23,8 +23,8 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
+import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
+import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 import SimpleReactValidator from 'simple-react-validator';
 
@@ -109,7 +109,7 @@ class LoginPage extends Component {
     
     return (
       <>
-        <ExamplesNavbar />
+        <DefaultNavbar />
         <div className="page-header clear-filter" filter-color="blue">
           <div
             className="page-header-image"
@@ -200,7 +200,7 @@ class LoginPage extends Component {
               </Col>
             </Container>
           </div>
-          <TransparentFooter />
+          <DefaultFooter/>
         </div>
       </>
     );

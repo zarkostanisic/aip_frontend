@@ -20,8 +20,8 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import LandingPageHeader from "components/Headers/LandingPageHeader.js";
+import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
+import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 class LandingPage extends Component {
@@ -97,9 +97,9 @@ class LandingPage extends Component {
     
     return (
       <>
-        <ExamplesNavbar />
+        <DefaultNavbar />
         <div className="wrapper">
-          <LandingPageHeader />
+          <IndexPageHeader />
           <div className="section section-about-us">
             <Container>
               <Row>
@@ -113,7 +113,7 @@ class LandingPage extends Component {
               />
             </Container>
           </div>
-          <DefaultFooter />
+          <DefaultFooter classes="footer-default"/>
         </div>
       </>
     );
