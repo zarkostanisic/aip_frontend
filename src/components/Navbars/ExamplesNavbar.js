@@ -135,7 +135,24 @@ class ExamplesNavbar extends Component {
               navbar
             >
               <Nav navbar>
-
+                <NavItem>
+                  <NavLink to="/index" tag={Link}>
+                      AIP
+                    </NavLink>
+                </NavItem>
+                
+                <NavItem>
+                  <NavLink to="/index" tag={Link}>
+                      Onama
+                    </NavLink>
+                </NavItem>
+                
+                <NavItem>
+                  <NavLink to="/posts" tag={Link}>
+                      Blog
+                    </NavLink>
+                </NavItem>
+                
                 <NavItem>
                   <NavLink
                     href="https://twitter.com/CreativeTim?ref=creativetim"
