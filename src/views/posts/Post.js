@@ -82,7 +82,11 @@ class Post extends Component {
           
           <div className="section">
             <Container>
-              <ImageGallery items={items} />
+              <Row className="justify-content-center">
+                <Col lg="8" md="12">
+                  <ImageGallery items={items} />
+                </Col>
+              </Row>
             </Container>
           </div>
           <DefaultFooter classes="footer-default"/>
