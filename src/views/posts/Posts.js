@@ -29,7 +29,7 @@ class LandingPage extends Component {
     posts: [],
     page: 1,
     total: 0,
-    perPage: 1,
+    perPage: 12,
     pageRragneDisplayed: 3
   };
   
