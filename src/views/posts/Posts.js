@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import ReactPaginate from 'react-paginate';
+import Pagination from '../../components/Pagination/Pagination';
 import API from '../../api/api';
 
 // reactstrap components
@@ -29,7 +29,7 @@ class LandingPage extends Component {
     posts: [],
     page: 1,
     total: 0,
-    perPage: 12,
+    perPage: 1,
     pageRragneDisplayed: 3
   };
   
@@ -105,24 +105,12 @@ class LandingPage extends Component {
               <Row>
                 {posts}
               </Row>
-              <ReactPaginate
-                 breakLabel="..."
-                 nextLabel="next"
-                 onPageChange={this.handlePageClick}
-                 pageRangeDisplayed={this.state.pageRragneDisplayed}
-                 pageCount={Math.ceil(this.state.total / this.state.perPage)}
-                 previousLabel="previous"
-                 renderOnZeroPageCount={null}
-                 className="pagination justify-content-center"
-                 pageClassName="page-item"
-                 pageLinkClassName="page-link"
-                 activeClassName="active"
-                 activeLinkClassName="active"
-                 previousClassName="page-item"
-                 nextClassName="page-item"
-                 previousLinkClassName="page-link"
-                 nextLinkClassName="page-link"
-               />
+              <Pagination 
+                handlePageClick={this.handlePageClick} 
+                pageRragneDisplayed={this.state.pageRragneDisplayed}
+                total={this.state.total}
+                perPage={this.state.perPage}
+              />
             </Container>
           </div>
           <DefaultFooter />
