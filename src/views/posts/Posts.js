@@ -24,7 +24,7 @@ import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
-class LandingPage extends Component {
+class Posts extends Component {
   state = {
     posts: [],
     page: 1,
@@ -120,4 +120,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+export default Posts;

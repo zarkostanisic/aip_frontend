@@ -33,6 +33,7 @@ import IndexPage from "views/index/IndexPage";
 import LoginPage from "views/auth/LoginPage.js";
 import Posts from "views/posts/Posts.js";
 import AboutPage from "views/about/AboutPage.js";
+import Post from "views/posts/Post.js";
 
 const store = createStore(
    reducer,
@@ -63,6 +64,11 @@ ReactDOM.render(
       <Route
         path="/about"
         render={(props) => <AboutPage {...props} />}
+      />
+      
+      <Route
+        path="/post/:id"
+        render={(props) => <Post {...props} />}
       />
       
       <Redirect to="/index" />
