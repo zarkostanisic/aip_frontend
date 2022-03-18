@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Pagination from '../../components/Pagination/Pagination';
 import API from '../../api/api';
+import { Link } from "react-router-dom";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 // reactstrap components
@@ -73,6 +74,16 @@ class Post extends Component {
           
           <div className="section">
             <Container>
+            <div className="author float-right">
+              <b>
+                <Link to="/">
+                  <span>{this.state.post?.user.username}</span>
+                </Link>
+                </b>, {this.state.post?.created_at}
+            </div>
+              <h5 className="category">
+                {this.state.post?.category.name}
+              </h5>
               <h3 className="title">{this.state.post?.title}</h3>
               <h5 className="description">
                 {this.state.post?.text}

@@ -17,7 +17,8 @@ import {
   CardBody,
   CardImg,
   CardTitle,
-  CardText
+  CardText,
+  CardFooter
 } from "reactstrap";
 
 // core components
@@ -47,7 +48,19 @@ class Posts extends Component {
           total: results.data.meta.total
         });
       });
-  } 
+  }
+  
+  getCategory = () => {
+    
+    if(this.props.match.params.category_id){
+      var result = API.get('api/app/category/' + this.props.match.params.category_id)
+        .then(result => {
+          this.setState({
+            posts: result.data.data
+          });
+        });
+    }
+  }  
   
   handlePageClick = (event) => {
     const page = event.selected + 1;
@@ -86,16 +99,27 @@ class Posts extends Component {
           
             <Card className="card-plain card-blog">
               <div className="postImg" style={{ backgroundImage: `url('${post.images[0]?.path}')` }}></div>
+              <div className="author float-right">
+                <b>
+                  <Link to="/">
+                    <span>{post.user.username}</span>
+                  </Link>
+                  </b>, {post.created_at}
+              </div>
               <CardBody>
                 <h6 className="category">
                   {post.category.name}
                 </h6>
-                <CardTitle tag="h6">{post.title}</CardTitle>
+                
+                <CardTitle tag="h5">{post.title}</CardTitle>
                 <CardText>
                   {post.text.substring(0, 200)}
                 </CardText>
                 <Link to={'/post/' + post.id}>Pročitaj</Link>
               </CardBody>
+              <CardFooter>
+                
+              </CardFooter>
             </Card>
         </Col>
       );
@@ -108,6 +132,7 @@ class Posts extends Component {
           <IndexPageHeader />
           <div className="section section-about-us">
             <Container>
+              <h1>Blog</h1>
               <Row>
                 {posts}
               </Row>
