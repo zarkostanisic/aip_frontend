@@ -82,7 +82,9 @@ class Posts extends Component {
   
   componentDidUpdate = (prevProps) => {
     if(this.props.match.params.category_id !== prevProps.match.params.category_id ) {
-
+      
+      document.documentElement.classList.remove("nav-open");
+      
       this.getPosts();
    };
   };

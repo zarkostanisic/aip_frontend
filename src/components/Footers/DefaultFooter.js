@@ -27,7 +27,7 @@ function DefaultFooter(props) {
               </li>
               
               <li>
-                <Link to="/contact">Contact</Link>
+                <Link to="/contact">Kontakt</Link>
               </li>
             </ul>
           </nav>

@@ -19,6 +19,9 @@ import {
 } from "reactstrap";
 
 class DefaultNavbar extends Component {
+  state = {
+    collapseOpen: false
+  }
   
   state = {
     navbarColor: 'navbar-transparent',
@@ -55,6 +58,10 @@ class DefaultNavbar extends Component {
     }
   };
   
+  setCollapseOpen = (value) => {
+    this.setState({collapseOpen: value});
+  }
+  
   componentDidMount(){
     this.getCategories();
     
@@ -68,9 +75,11 @@ class DefaultNavbar extends Component {
   render(){
     const categories = this.state.categories.map((category) => {
       return(
-        <DropdownItem tag={Link} to={'/posts/' + category.id} key={category.id}>
-          {category.name}
-        </DropdownItem>
+        <NavItem key={category.id}>
+          <NavLink tag={Link} to={'/posts/' + category.id}>
+            {category.name}
+          </NavLink>
+        </NavItem>
       );
     });
     
@@ -81,31 +90,14 @@ class DefaultNavbar extends Component {
             id="bodyClick"
             onClick={() => {
               document.documentElement.classList.toggle("nav-open");
-              this.setState({collapseOpen: false});
+              this.setCollapseOpen(false);
             }}
           />
         ) : null}
         <Navbar className={"fixed-top " + this.state.navbarColor} color="info" expand="lg">
           <Container>
-            <UncontrolledDropdown className="button-dropdown">
-              <DropdownToggle
-                caret
-                data-toggle="dropdown"
-                id="navbarDropdown"
-                tag="a"
-                onClick={(e) => e.preventDefault()}
-              >
-                <span className="button-bar"></span>
-                <span className="button-bar"></span>
-                <span className="button-bar"></span>
-              </DropdownToggle>
-              <DropdownMenu aria-labelledby="navbarDropdown">
-                {categories}
-              </DropdownMenu>
-            </UncontrolledDropdown>
             <div className="navbar-translate">
-              <NavbarBrand
-                href="/"
+              <NavbarBrand to="/" tag={Link}
                 id="navbar-brand"
               >
                 AIP
@@ -114,7 +106,7 @@ class DefaultNavbar extends Component {
                 className="navbar-toggler navbar-toggler"
                 onClick={() => {
                   document.documentElement.classList.toggle("nav-open");
-                  this.setState({collapseOpen: !this.state.collapseOpen});
+                  this.setCollapseOpen(!this.state.collapseOpen);
                 }}
                 aria-expanded={this.state.collapseOpen}
                 type="button"
@@ -130,6 +122,9 @@ class DefaultNavbar extends Component {
               navbar
             >
               <Nav navbar>
+              
+              {categories}
+              
               <NavItem>
                 <NavLink to="/posts" tag={Link}>
                     Blog
@@ -144,7 +139,7 @@ class DefaultNavbar extends Component {
                 
                 <NavItem>
                   <NavLink to="/contact" tag={Link}>
-                      Contact
+                      Kontakt
                   </NavLink>
                 </NavItem>
                 
