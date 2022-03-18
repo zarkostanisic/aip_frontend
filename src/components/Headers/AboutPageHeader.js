@@ -1,4 +1,5 @@
 import React from "react";
+import API from '../../api/api';
 
 // reactstrap components
 import {
@@ -20,8 +21,22 @@ import {
 
 function AboutPageHeader() {
   let pageHeader = React.createRef();
+  const [statistics, setStatistics] = React.useState(null);
+  const [first, setFirst] = React.useState(true);
+  
+  const getStatistics = () => {
+    var result = API.get('api/app/statistics')
+      .then(result => {
+        setStatistics(result.data);
+        setFirst(false)
+      });
+  }
 
   React.useEffect(() => {
+    if(first){
+      getStatistics();
+    }
+    
     if (window.innerWidth > 991) {
       const updateScroll = () => {
         let windowScrollTop = window.pageYOffset / 3;
@@ -34,6 +49,7 @@ function AboutPageHeader() {
       };
     }
   });
+
   return (
     <>
       <div
@@ -63,16 +79,16 @@ function AboutPageHeader() {
           </Col>
           <div className="content">
             <div className="social-description">
-              <h2>26</h2>
-              <p>Posts</p>
+              <h2>{statistics?.posts}</h2>
+              <p>Objava</p>
             </div>
             <div className="social-description">
-              <h2>26</h2>
-              <p>Comments</p>
+              <h2>{statistics?.comments}</h2>
+              <p>Komentara</p>
             </div>
             <div className="social-description">
-              <h2>48</h2>
-              <p>Images</p>
+              <h2>{statistics?.images}</h2>
+              <p>Slika</p>
             </div>
           </div>
         </Container>
