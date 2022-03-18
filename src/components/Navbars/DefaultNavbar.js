@@ -130,12 +130,12 @@ class DefaultNavbar extends Component {
               navbar
             >
               <Nav navbar>
-                <NavItem>
-                  <NavLink to="/index" tag={Link}>
-                      AIP
-                    </NavLink>
-                </NavItem>
-                
+              <NavItem>
+                <NavLink to="/posts" tag={Link}>
+                    Blog
+                  </NavLink>
+              </NavItem>
+              
                 <NavItem>
                   <NavLink to="/about" tag={Link}>
                       Onama
@@ -143,9 +143,9 @@ class DefaultNavbar extends Component {
                 </NavItem>
                 
                 <NavItem>
-                  <NavLink to="/posts" tag={Link}>
-                      Blog
-                    </NavLink>
+                  <NavLink to="/contact" tag={Link}>
+                      Contact
+                  </NavLink>
                 </NavItem>
                 
                 <NavItem>

@@ -1,25 +1,5 @@
 // style for the landing page
 .index-page{
-    .page-header{
-        height: 125vh;
-
-        .container{
-            > .content-center{
-                top: 37%;
-            }
-        }
-
-        .category-absolute{
-            position: absolute;
-            top: 100vh;
-            margin-top: -60px;
-            padding: 0 15px;
-            width: 100%;
-            color: rgba(255,255,255,.5);
-        }
-    }
-}
-.landing-page{
 
     .header{
         height: 100vh;
@@ -42,14 +22,30 @@
             color: $white-color;
         }
     }
+}
 
-    .section-team{
-        .team .team-player img{
-            max-width: 100px;
+// style for the landing page
+.contact-page{
+
+    .header{
+        height: 100vh;
+        position: relative;
+
+        .container{
+            padding-top: 26vh;
+            color: #FFFFFF;
+            z-index: 2;
+            position: relative;
         }
 
-        .team-player{
-            margin-bottom: 15px;
+        .share{
+            margin-top: 150px;
+        }
+        h1{
+            font-weight: 600;
+        }
+        .title{
+            color: $white-color;
         }
     }
 
@@ -81,6 +77,86 @@
 // style for the profile page
 .profile-page{
 
+    .page-header{
+        min-height: 550px;
+    }
+
+    .profile-container{
+        color: #FFFFFF;
+    }
+    .photo-container{
+        width: 123px;
+        height: 123px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .title{
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .description,
+    .category{
+        text-align: center;
+    }
+
+    h5.description{
+        max-width: 700px;
+        margin: 20px auto 75px;
+    }
+
+    .nav-align-center{
+        margin-top: 30px;
+    }
+
+    .content{
+        max-width: 450px;
+        margin: 0 auto;
+
+        .social-description{
+            display: inline-block;
+            max-width: 150px;
+            width: 145px;
+            text-align: center;
+            margin: 15px 0 0px;
+
+            h2{
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .button-container{
+        text-align: center;
+        margin-top: -106px;
+    }
+
+    .collections{
+        img{
+            margin-bottom: 30px;
+        }
+    }
+
+    .gallery{
+        margin-top: 45px;
+        padding-bottom: 50px;
+    }
+}
+
+// style for the about page
+.about-page{
+    .section-team{
+        .team .team-player img{
+            max-width: 100px;
+        }
+
+        .team-player{
+            margin-bottom: 15px;
+        }
+    }
     .page-header{
         min-height: 550px;
     }

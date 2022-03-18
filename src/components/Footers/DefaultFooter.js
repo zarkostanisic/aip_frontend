@@ -17,11 +17,17 @@ function DefaultFooter(props) {
               <li>
                 <Link to="/">AIP</Link>
               </li>
+              
+              <li>
+                <Link to="/posts">Blog</Link>
+              </li>
+              
               <li>
                 <Link to="/about">O nama</Link>
               </li>
+              
               <li>
-                <Link to="/posts">Blog</Link>
+                <Link to="/contact">Contact</Link>
               </li>
             </ul>
           </nav>

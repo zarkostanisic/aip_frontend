@@ -30,10 +30,11 @@ import "assets/demo/nucleo-icons-page-styles.css?v=1.5.0";
 import "./index.css";
 // pages for this kit
 import IndexPage from "views/index/IndexPage";
-import LoginPage from "views/auth/LoginPage.js";
-import Posts from "views/posts/Posts.js";
-import AboutPage from "views/about/AboutPage.js";
-import Post from "views/posts/Post.js";
+import LoginPage from "views/auth/LoginPage";
+import Posts from "views/posts/Posts";
+import AboutPage from "views/about/AboutPage";
+import Post from "views/posts/Post";
+import Contact from "views/contact/Contact";
 
 const store = createStore(
    reducer,
@@ -64,6 +65,11 @@ ReactDOM.render(
       <Route
         path="/about"
         render={(props) => <AboutPage {...props} />}
+      />
+      
+      <Route
+        path="/contact"
+        render={(props) => <Contact {...props} />}
       />
       
       <Route
