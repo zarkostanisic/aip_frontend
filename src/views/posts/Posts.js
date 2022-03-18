@@ -84,14 +84,17 @@ class Posts extends Component {
       return(
         <Col md="4" key={post.id}>
           
-            <Card>
+            <Card className="card-plain card-blog">
               <div className="postImg" style={{ backgroundImage: `url('${post.images[0]?.path}')` }}></div>
               <CardBody>
-                <CardTitle tag="h4">{post.title}</CardTitle>
+                <h6 className="category">
+                  {post.category.name}
+                </h6>
+                <CardTitle tag="h6">{post.title}</CardTitle>
                 <CardText>
-                  {post.text}
+                  {post.text.substring(0, 200)}
                 </CardText>
-                <Link to={'/post/' + post.id}>Procitaj</Link>
+                <Link to={'/post/' + post.id}>Pročitaj</Link>
               </CardBody>
             </Card>
         </Col>
