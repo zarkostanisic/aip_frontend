@@ -69,9 +69,8 @@ class AboutPage extends Component {
               src={require("assets/img/default-avatar.png").default}
             ></img>
             <h4 className="title">{person.first_name} {person.last_name}</h4>
-            <p className="category text-info">{person.role.name}</p>
             <p className="description">
-              Text
+              {person.about}
             </p>
             <Button
               className="btn-icon btn-round"
