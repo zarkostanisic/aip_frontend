@@ -126,7 +126,7 @@ class LoginPage extends Component {
                       <div>
                         <img style={{width: "40%"}}
                           alt="..."
-                          src={require("assets/img/now-logo-back.png").default}
+                          src={require("assets/img/logo.png").default}
                         ></img>
                       </div>
                     </CardHeader>
