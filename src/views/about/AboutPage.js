@@ -66,7 +66,7 @@ class AboutPage extends Component {
             <img
               alt="..."
               className="rounded-circle img-fluid img-raised"
-              src={require("assets/img/default-avatar.png").default}
+              src={person.image}
             ></img>
             <h4 className="title">{person.first_name} {person.last_name}</h4>
             <p className="description">
