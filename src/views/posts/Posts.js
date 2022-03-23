@@ -25,6 +25,7 @@ import {
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
+import Spinner from '../../components/Spinner/Spinner';
 
 class Posts extends Component {
   state = {
@@ -32,11 +33,14 @@ class Posts extends Component {
     page: 1,
     total: 0,
     perPage: 12,
-    pageRragneDisplayed: 3
+    pageRragneDisplayed: 3,
+    loading: false
   };
   
   getPosts = (page = 1) => {
     const filter = this.props.match.params.category_id ? '&category_id=' + this.props.match.params.category_id : '';
+    
+    this.setState({loading: true});
     
     var results = API.get('api/app/posts?page=' + page + '&per_page=' + this.state.perPage + filter)
       .then(results => {
@@ -47,6 +51,8 @@ class Posts extends Component {
         this.setState({
           total: results.data.meta.total
         });
+        
+        this.setState({loading: false});
       });
   }
   
@@ -136,14 +142,27 @@ class Posts extends Component {
             <Container>
               <h1>Blog</h1>
               <Row>
-                {posts}
+                {
+                  this.state.loading
+                  ?
+                    <Col md="12">
+                      <Spinner/>
+                    </Col>
+                  :
+                    posts
+                }
               </Row>
-              <Pagination 
-                handlePageClick={this.handlePageClick} 
-                pageRragneDisplayed={this.state.pageRragneDisplayed}
-                total={this.state.total}
-                perPage={this.state.perPage}
-              />
+              {
+                !this.state.loading
+                ?
+                  <Pagination 
+                    handlePageClick={this.handlePageClick} 
+                    pageRragneDisplayed={this.state.pageRragneDisplayed}
+                    total={this.state.total}
+                    perPage={this.state.perPage}
+                  />
+                : null
+              }
             </Container>
           </div>
           <DefaultFooter classes="footer-default"/>
