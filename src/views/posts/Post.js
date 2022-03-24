@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import API from '../../api/api';
 import { Link } from "react-router-dom";
 import "react-image-gallery/styles/css/image-gallery.css";
+import {getSiteName} from '../../components/Functions/Functions';
 
 // reactstrap components
 import {
@@ -18,8 +19,7 @@ import ImageGallery from 'react-image-gallery';
 
 class Post extends Component {
   state = {
-    post: null,
-    prevTitle: ''
+    post: null
   }
   
   getPost = () => {
@@ -34,7 +34,6 @@ class Post extends Component {
   } 
   
   componentDidMount(){
-    this.setState({prevTitle: document.title});
     
     this.getPost();
     
@@ -46,7 +45,6 @@ class Post extends Component {
   }
   
   componentWillUnmount(){
-    document.title = this.state.prevTitle;
     
     document.body.classList.remove("landing-page");
     document.body.classList.remove("sidebar-collapse");
@@ -59,7 +57,7 @@ class Post extends Component {
         return {original: image.path, thumbnail: image.path};
       });
       
-      document.title = this.state.post.title + ' | ' + this.state.post.category.name + ' | ' + document.title;
+      document.title = this.state.post.title + ' | ' + this.state.post.category.name + ' | ' + getSiteName();
     }
     
     return (

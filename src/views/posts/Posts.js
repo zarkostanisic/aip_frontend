@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Pagination from '../../components/Pagination/Pagination';
 import API from '../../api/api';
 import { Link } from "react-router-dom";
+import {getSiteName} from '../../components/Functions/Functions';
 
 // reactstrap components
 import {
@@ -28,8 +29,7 @@ class Posts extends Component {
     total: 0,
     perPage: 12,
     pageRragneDisplayed: 3,
-    loading: false,
-    prevTitle: ''
+    loading: false
   };
   
   getPosts = (page = 1) => {
@@ -50,9 +50,9 @@ class Posts extends Component {
         this.setState({loading: false});
         
         if(this.props.match.params.slug && this.state.posts.length > 0){
-          document.title = this.state.posts[0].category.name + ' | Blog | ' + this.state.prevTitle;
+          document.title = this.state.posts[0].category.name + ' | Blog | ' + getSiteName();
         }else{
-          document.title = 'Blog | ' + this.state.prevTitle;
+          document.title = 'Blog | ' + getSiteName();
         }
       });
   }  
@@ -66,7 +66,6 @@ class Posts extends Component {
   }
   
   componentDidMount(){
-    this.setState({prevTitle: document.title});
     
     document.body.classList.add("landing-page");
     document.body.classList.add("sidebar-collapse");
@@ -87,7 +86,6 @@ class Posts extends Component {
   };
   
   componentWillUnmount(){
-    document.title = this.state.prevTitle;
     
     document.body.classList.remove("landing-page");
     document.body.classList.remove("sidebar-collapse");
@@ -135,7 +133,13 @@ class Posts extends Component {
           <IndexPageHeader />
           <div className="section section-about-us">
             <Container>
-              <h1>{this.props.match.params.slug && this.state.posts.length > 0 ? this.state.posts[0].category.name :'Blog'}</h1>
+              {!this.state.loading
+                ?
+                  <h1>{this.props.match.params.slug && this.state.posts.length > 0 ? this.state.posts[0].category.name :'Blog'}</h1>
+                : 
+                  null
+              }
+              
               <Row>
                 {
                   this.state.loading
@@ -147,6 +151,7 @@ class Posts extends Component {
                     posts
                 }
               </Row>
+              
               {
                 !this.state.loading
                 ?

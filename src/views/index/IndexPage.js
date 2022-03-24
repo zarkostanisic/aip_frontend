@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {getSiteName} from '../../components/Functions/Functions';
 
 // reactstrap components
 import {
@@ -20,6 +21,8 @@ class IndexPage extends Component {
   };
   
   componentDidMount(){
+    document.title =  getSiteName();
+    
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");

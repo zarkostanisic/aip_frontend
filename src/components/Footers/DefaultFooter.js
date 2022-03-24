@@ -4,32 +4,31 @@ import {Link} from "react-router-dom";
 
 // reactstrap components
 import { Container } from "reactstrap";
+import {getMainLinks} from '../../components/Functions/Functions';
 
 // core components
 
 class DefaultFooter extends Component {
   render(){
+    const mainLinks = getMainLinks().map((item, k) => {
+      var key = Object.keys(item)[0];
+      item = item[key];
+      
+      return (
+        <li key={k}>
+          <Link to={item.path}>{item.name}</Link>
+        </li>
+      );
+      
+    });
+    
     return (
       <>
         <footer className={'footer ' + this.props.classes}>
           <Container>
             <nav>
               <ul>
-                <li>
-                  <Link to="/">AIP</Link>
-                </li>
-                
-                <li>
-                  <Link to="/posts">Blog</Link>
-                </li>
-                
-                <li>
-                  <Link to="/about">O nama</Link>
-                </li>
-                
-                <li>
-                  <Link to="/contact">Kontakt</Link>
-                </li>
+                {mainLinks}
               </ul>
             </nav>
             <div className="copyright" id="copyright">

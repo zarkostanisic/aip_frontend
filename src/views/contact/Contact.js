@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {getSiteName} from '../../components/Functions/Functions';
 
 // reactstrap components
 import {
@@ -22,13 +23,11 @@ class Contact extends Component {
   state = {
     firstFocus: false,
     emailFocus: false,
-    prevTitle: ''
   };
   
   componentDidMount(){
     
-    this.setState({prevTitle: document.title});
-    document.title =  'Kontakt | ' + document.title;
+    document.title =  'Kontakt | ' + getSiteName();
     
     document.body.classList.add("contact-page");
     document.body.classList.add("sidebar-collapse");
@@ -38,7 +37,6 @@ class Contact extends Component {
   }
   
   componentWillUnmount(){
-    document.title = this.state.prevTitle;
     
     document.body.classList.remove("contact-page");
     document.body.classList.remove("sidebar-collapse");

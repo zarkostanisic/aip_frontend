@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import API from '../../api/api';
+import {getSiteName} from '../../components/Functions/Functions';
 
 // reactstrap components
 import {
@@ -19,8 +20,7 @@ class AboutPage extends Component {
   
   state = {
     team: [],
-    loading: false,
-    prevTitle: ''
+    loading: false
   }
   
   getTeam = () => {
@@ -39,8 +39,7 @@ class AboutPage extends Component {
   componentDidMount(){
     this.getTeam();
     
-    this.setState({prevTitle: document.title});
-    document.title =  'O nama | ' + document.title;
+    document.title =  'O nama | ' + getSiteName();
     
     document.body.classList.add("about-page");
     document.body.classList.add("sidebar-collapse");
@@ -51,7 +50,6 @@ class AboutPage extends Component {
   
   
   componentWillUnmount(){
-    document.title = this.state.prevTitle;
     
     document.body.classList.remove("about-page");
     document.body.classList.remove("sidebar-collapse");

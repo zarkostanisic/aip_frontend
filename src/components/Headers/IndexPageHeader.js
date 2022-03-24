@@ -3,7 +3,7 @@ import React, {Component} from "react";
 // reactstrap components
 import { Container } from "reactstrap";
 
-// core components
+import {getSlogan} from '../../components/Functions/Functions';
 
 class IndexHeader extends Component{
   
@@ -20,7 +20,7 @@ class IndexHeader extends Component{
           ></div>
           <div className="content-center">
             <Container>
-              <h1 className="title">Slogan.</h1>
+              <h1 className="title">{getSlogan()}</h1>
             </Container>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import API from '../../api/api';
+import {getSiteName} from '../../components/Functions/Functions';
 
 import { connect } from 'react-redux'
 import { login } from '../../actions';
@@ -33,8 +34,7 @@ class LoginPage extends Component {
     username: '',
     password: '',
     usernameFocus: false,
-    passwordFocus: false,
-    prevTitle: ''
+    passwordFocus: false
   }
   
   handleLogin = () => {
@@ -65,8 +65,7 @@ class LoginPage extends Component {
   } 
   
   componentDidMount(){
-    this.setState({prevTitle: document.title});
-    document.title =  'Login | ' + document.title;
+    document.title =  'Login | ' + getSiteName();
     
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
@@ -86,7 +85,6 @@ class LoginPage extends Component {
   }
   
   componentWillUnmount(){
-    document.title = this.state.prevTitle;
     
     document.body.classList.remove("login-page");
     document.body.classList.remove("sidebar-collapse");

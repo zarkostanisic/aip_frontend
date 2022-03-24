@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import API from '../../api/api';
+import {getMainLinks} from '../../components/Functions/Functions';
 
 // reactstrap components
 import {
@@ -69,6 +70,22 @@ class DefaultNavbar extends Component {
   }
   
   render(){
+    const mainLinks = getMainLinks().map((item, k) => {
+      var key = Object.keys(item)[0];
+      
+      if(key != 'index'){
+        item = item[key];
+        
+        return (
+          <NavItem key={k}>
+            <NavLink to={item.path} tag={Link}>
+                {item.name}
+              </NavLink>
+          </NavItem>
+        );
+      }
+      
+    });
     const categories = this.state.categories.map((category) => {
       return(
         <NavItem key={category.id}>
@@ -79,6 +96,7 @@ class DefaultNavbar extends Component {
       );
     });
     
+    console.log(getMainLinks());
     return (
       <>
         {this.state.collapseOpen ? (
@@ -121,23 +139,7 @@ class DefaultNavbar extends Component {
               
               {categories}
               
-              <NavItem>
-                <NavLink to="/posts" tag={Link}>
-                    Blog
-                  </NavLink>
-              </NavItem>
-              
-                <NavItem>
-                  <NavLink to="/about" tag={Link}>
-                      Onama
-                    </NavLink>
-                </NavItem>
-                
-                <NavItem>
-                  <NavLink to="/contact" tag={Link}>
-                      Kontakt
-                  </NavLink>
-                </NavItem>
+              {mainLinks}
                 
                 <NavItem>
                   <NavLink
