@@ -9,12 +9,7 @@ import {
   InputGroup,
   Container,
   Row,
-  Col,
-  Card,
-  CardBody,
-  CardImg,
-  CardTitle,
-  CardText
+  Col
 } from "reactstrap";
 
 // core components

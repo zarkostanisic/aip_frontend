@@ -38,7 +38,7 @@ class LoginPage extends Component {
   
   handleLogin = () => {
     if (this.validator.allValid()) {
-      var results = API.post('api/login', {username: this.state.username, password: this.state.password, type: 'cms'})
+      API.post('api/login', {username: this.state.username, password: this.state.password, type: 'cms'})
         .then(result => {
           localStorage.setItem('token', result.data.token);
           this.props.login(result.data.user);
@@ -53,7 +53,7 @@ class LoginPage extends Component {
   
   handleGetUser = () => {
     
-    var results = API.get('api/user')
+    API.get('api/user')
       .then(result => {
         this.props.login(result.data.data);
       });

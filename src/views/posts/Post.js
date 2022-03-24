@@ -1,24 +1,13 @@
 import React, {Component} from "react";
-import Pagination from '../../components/Pagination/Pagination';
 import API from '../../api/api';
 import { Link } from "react-router-dom";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 // reactstrap components
 import {
-  Button,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
-  Col,
-  Card,
-  CardBody,
-  CardImg,
-  CardTitle,
-  CardText
+  Col
 } from "reactstrap";
 
 // core components
@@ -34,7 +23,7 @@ class Post extends Component {
   
   getPost = () => {
     
-    var result = API.get('api/app/post/' + this.props.match.params.id)
+    API.get('api/app/post/' + this.props.match.params.id)
       .then(result => {
         
         this.setState({

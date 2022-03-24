@@ -3,29 +3,20 @@ import API from '../../api/api';
 
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
-  CardBody,
-  CardFooter,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
-  Col,
+  Col
 } from "reactstrap";
 
 // core components
 
 function AboutPageHeader() {
-  let pageHeader = React.createRef();
   const [statistics, setStatistics] = React.useState(null);
   const [first, setFirst] = React.useState(true);
   
   const getStatistics = () => {
-    var result = API.get('api/app/statistics')
+    API.get('api/app/statistics')
       .then(result => {
         setStatistics(result.data);
         setFirst(false)
@@ -37,17 +28,9 @@ function AboutPageHeader() {
       getStatistics();
     }
     
-    if (window.innerWidth > 991) {
-      const updateScroll = () => {
-        let windowScrollTop = window.pageYOffset / 3;
-        pageHeader.current.style.transform =
-          "translate3d(0," + windowScrollTop + "px,0)";
-      };
-      window.addEventListener("scroll", updateScroll);
-      return function cleanup() {
-        window.removeEventListener("scroll", updateScroll);
-      };
-    }
+    return function cleanup() {
+      setFirst(false);
+    };
   });
 
   return (
@@ -62,7 +45,6 @@ function AboutPageHeader() {
             backgroundImage:
               "url(" + require("assets/img/trem.jpg").default + ")",
           }}
-          ref={pageHeader}
         ></div>
         <Container>
         <Col className="ml-auto mr-auto" md="4">

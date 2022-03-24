@@ -4,15 +4,9 @@ import API from '../../api/api';
 // reactstrap components
 import {
   Button,
-  NavItem,
-  NavLink,
-  Nav,
-  TabContent,
-  TabPane,
   Container,
   Row,
-  Col,
-  UncontrolledTooltip,
+  Col
 } from "reactstrap";
 
 // core components
@@ -31,7 +25,7 @@ class AboutPage extends Component {
   getTeam = () => {
     this.setState({loading: true});
     
-    var results = API.get('api/app/team')
+    API.get('api/app/team')
       .then(results => {
         this.setState({
           team: results.data.data

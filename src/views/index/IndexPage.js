@@ -2,19 +2,9 @@ import React, {Component} from "react";
 
 // reactstrap components
 import {
-  Button,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
-  Col,
-  Card,
-  CardBody,
-  CardImg,
-  CardTitle,
-  CardText
+  Col
 } from "reactstrap";
 
 // core components

@@ -5,17 +5,13 @@ import API from '../../api/api';
 // reactstrap components
 import {
   Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
   Nav,
   Container,
-  UncontrolledTooltip,
+  UncontrolledTooltip
 } from "reactstrap";
 
 class DefaultNavbar extends Component {
@@ -31,7 +27,7 @@ class DefaultNavbar extends Component {
   
   getCategories = (page = 1) => {
     
-    var results = API.get('api/app/categories')
+    API.get('api/app/categories')
       .then(results => {
         this.setState({
           categories: results.data.data
