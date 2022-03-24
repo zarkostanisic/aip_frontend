@@ -5,17 +5,11 @@ import { Link } from "react-router-dom";
 
 // reactstrap components
 import {
-  Button,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col,
   Card,
   CardBody,
-  CardImg,
   CardTitle,
   CardText,
   CardFooter
@@ -42,7 +36,7 @@ class Posts extends Component {
     
     this.setState({loading: true});
     
-    var results = API.get('api/app/posts?page=' + page + '&per_page=' + this.state.perPage + filter)
+    API.get('api/app/posts?page=' + page + '&per_page=' + this.state.perPage + filter)
       .then(results => {
         this.setState({
           posts: results.data.data
@@ -59,7 +53,7 @@ class Posts extends Component {
   getCategory = () => {
     
     if(this.props.match.params.category_id){
-      var result = API.get('api/app/category/' + this.props.match.params.category_id)
+      API.get('api/app/category/' + this.props.match.params.category_id)
         .then(result => {
           this.setState({
             posts: result.data.data
@@ -106,7 +100,9 @@ class Posts extends Component {
         <Col md="4" key={post.id}>
           
             <Card className="card-plain card-blog">
-              <div className="postImg" style={{ backgroundImage: `url('${post.images[0]?.path}')` }}></div>
+              <Link to={'/post/' + post.id}>
+                <div className="postImg" style={{ backgroundImage: `url('${post.images[0]?.path}')` }}></div>
+              </Link>
               <div className="author float-right">
                 <b>
                   <Link to="/">
