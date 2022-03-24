@@ -33,7 +33,8 @@ class LoginPage extends Component {
     username: '',
     password: '',
     usernameFocus: false,
-    passwordFocus: false
+    passwordFocus: false,
+    prevTitle: ''
   }
   
   handleLogin = () => {
@@ -64,6 +65,9 @@ class LoginPage extends Component {
   } 
   
   componentDidMount(){
+    this.setState({prevTitle: document.title});
+    document.title =  'Login | ' + document.title;
+    
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
@@ -82,6 +86,8 @@ class LoginPage extends Component {
   }
   
   componentWillUnmount(){
+    document.title = this.state.prevTitle;
+    
     document.body.classList.remove("login-page");
     document.body.classList.remove("sidebar-collapse");
   }

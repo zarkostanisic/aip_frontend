@@ -28,7 +28,8 @@ class Posts extends Component {
     total: 0,
     perPage: 12,
     pageRragneDisplayed: 3,
-    loading: false
+    loading: false,
+    prevTitle: ''
   };
   
   getPosts = (page = 1) => {
@@ -71,6 +72,9 @@ class Posts extends Component {
   }
   
   componentDidMount(){
+    this.setState({prevTitle: document.title});
+    document.title =  'Blog | ' + document.title;
+    
     document.body.classList.add("landing-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
@@ -90,6 +94,8 @@ class Posts extends Component {
   };
   
   componentWillUnmount(){
+    document.title = this.state.prevTitle;
+    
     document.body.classList.remove("landing-page");
     document.body.classList.remove("sidebar-collapse");
   }

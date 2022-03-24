@@ -21,10 +21,15 @@ class Contact extends Component {
   
   state = {
     firstFocus: false,
-    emailFocus: false
+    emailFocus: false,
+    prevTitle: ''
   };
   
   componentDidMount(){
+    
+    this.setState({prevTitle: document.title});
+    document.title =  'Kontakt | ' + document.title;
+    
     document.body.classList.add("contact-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
@@ -33,6 +38,8 @@ class Contact extends Component {
   }
   
   componentWillUnmount(){
+    document.title = this.state.prevTitle;
+    
     document.body.classList.remove("contact-page");
     document.body.classList.remove("sidebar-collapse");
   }

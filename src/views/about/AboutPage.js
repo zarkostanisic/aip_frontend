@@ -19,7 +19,8 @@ class AboutPage extends Component {
   
   state = {
     team: [],
-    loading: false
+    loading: false,
+    prevTitle: ''
   }
   
   getTeam = () => {
@@ -38,6 +39,9 @@ class AboutPage extends Component {
   componentDidMount(){
     this.getTeam();
     
+    this.setState({prevTitle: document.title});
+    document.title =  'O nama | ' + document.title;
+    
     document.body.classList.add("about-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
@@ -47,6 +51,8 @@ class AboutPage extends Component {
   
   
   componentWillUnmount(){
+    document.title = this.state.prevTitle;
+    
     document.body.classList.remove("about-page");
     document.body.classList.remove("sidebar-collapse");
   }
