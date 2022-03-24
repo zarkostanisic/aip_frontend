@@ -72,7 +72,7 @@ class DefaultNavbar extends Component {
     const categories = this.state.categories.map((category) => {
       return(
         <NavItem key={category.id}>
-          <NavLink tag={Link} to={'/posts/' + category.id}>
+          <NavLink tag={Link} to={'/posts/' + category.slug}>
             {category.name}
           </NavLink>
         </NavItem>

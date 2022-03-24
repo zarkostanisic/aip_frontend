@@ -33,7 +33,7 @@ class Posts extends Component {
   };
   
   getPosts = (page = 1) => {
-    const filter = this.props.match.params.category_id ? '&category_id=' + this.props.match.params.category_id : '';
+    const filter = this.props.match.params.slug ? '&slug=' + this.props.match.params.slug : '';
     
     this.setState({loading: true});
     
@@ -48,19 +48,13 @@ class Posts extends Component {
         });
         
         this.setState({loading: false});
+        
+        if(this.props.match.params.slug && this.state.posts.length > 0){
+          document.title = this.state.posts[0].category.name + ' | ' + this.state.prevTitle;
+        }else{
+          document.title = 'Blog | Avanturisti izazovne prirode';
+        }
       });
-  }
-  
-  getCategory = () => {
-    
-    if(this.props.match.params.category_id){
-      API.get('api/app/category/' + this.props.match.params.category_id)
-        .then(result => {
-          this.setState({
-            posts: result.data.data
-          });
-        });
-    }
   }  
   
   handlePageClick = (event) => {
@@ -85,7 +79,7 @@ class Posts extends Component {
   }
   
   componentDidUpdate = (prevProps) => {
-    if(this.props.match.params.category_id !== prevProps.match.params.category_id ) {
+    if(this.props.match.params.slug !== prevProps.match.params.slug) {
       
       document.documentElement.classList.remove("nav-open");
       
@@ -142,7 +136,7 @@ class Posts extends Component {
           <IndexPageHeader />
           <div className="section section-about-us">
             <Container>
-              <h1>Blog</h1>
+              <h1>{this.props.match.params.slug && this.state.posts.length > 0 ? this.state.posts[0].category.name :'Blog'}</h1>
               <Row>
                 {
                   this.state.loading

@@ -18,7 +18,8 @@ import ImageGallery from 'react-image-gallery';
 
 class Post extends Component {
   state = {
-    post: null
+    post: null,
+    prevTitle: ''
   }
   
   getPost = () => {
@@ -33,6 +34,8 @@ class Post extends Component {
   } 
   
   componentDidMount(){
+    this.setState({prevTitle: document.title});
+    
     this.getPost();
     
     document.body.classList.add("landing-page");
@@ -43,6 +46,8 @@ class Post extends Component {
   }
   
   componentWillUnmount(){
+    document.title = this.state.prevTitle;
+    
     document.body.classList.remove("landing-page");
     document.body.classList.remove("sidebar-collapse");
   }
@@ -53,6 +58,8 @@ class Post extends Component {
       items = this.state.post.images.map((image) => {
         return {original: image.path, thumbnail: image.path};
       });
+      
+      document.title = this.state.post.title + ' | ' + this.state.post.category.name + ' | ' + document.title;
     }
     
     return (

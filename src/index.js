@@ -53,7 +53,7 @@ ReactDOM.render(
       />
       
       <Route
-        path="/posts/:category_id"
+        path="/posts/:slug"
         render={(props) => <Posts {...props} />}
       />
       
