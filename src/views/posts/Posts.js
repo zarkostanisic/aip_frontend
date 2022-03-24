@@ -50,7 +50,7 @@ class Posts extends Component {
         this.setState({loading: false});
         
         if(this.props.match.params.slug && this.state.posts.length > 0){
-          document.title = this.state.posts[0].category.name + ' | ' + this.state.prevTitle;
+          document.title = this.state.posts[0].category.name + ' | ' + document.title;
         }else{
           document.title = 'Blog | Avanturisti izazovne prirode';
         }
