@@ -50,9 +50,9 @@ class Posts extends Component {
         this.setState({loading: false});
         
         if(this.props.match.params.slug && this.state.posts.length > 0){
-          document.title = this.state.posts[0].category.name + ' | ' + document.title;
+          document.title = this.state.posts[0].category.name + ' | Blog | ' + this.state.prevTitle;
         }else{
-          document.title = 'Blog | Avanturisti izazovne prirode';
+          document.title = 'Blog | ' + this.state.prevTitle;
         }
       });
   }  
@@ -67,7 +67,6 @@ class Posts extends Component {
   
   componentDidMount(){
     this.setState({prevTitle: document.title});
-    document.title =  'Blog | ' + document.title;
     
     document.body.classList.add("landing-page");
     document.body.classList.add("sidebar-collapse");
