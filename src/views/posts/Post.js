@@ -79,9 +79,7 @@ class Post extends Component {
                 {this.state.post?.category.name}
               </h5>
               <h3 className="title">{this.state.post?.title}</h3>
-              <h5 className="description">
-                {this.state.post?.text}
-              </h5>
+              <h5 className="description" dangerouslySetInnerHTML={{ __html: this.state.post?.text}}></h5>
             </Container>
           </div>
           

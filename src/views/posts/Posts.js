@@ -113,8 +113,7 @@ class Posts extends Component {
                 </h6>
                 
                 <CardTitle tag="h5">{post.title}</CardTitle>
-                <CardText>
-                  {post.text.substring(0, 200)}
+                <CardText dangerouslySetInnerHTML={{ __html: post.text.substring(0, 200)}}>
                 </CardText>
                 <Link to={'/post/' + post.id}>Pročitaj</Link>
               </CardBody>
