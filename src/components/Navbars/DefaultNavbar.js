@@ -96,7 +96,6 @@ class DefaultNavbar extends Component {
       );
     });
     
-    console.log(getMainLinks());
     return (
       <>
         {this.state.collapseOpen ? (
