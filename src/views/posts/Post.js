@@ -17,6 +17,8 @@ import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 import ImageGallery from 'react-image-gallery';
 
+import ShareButtons from '../../components/ShareButtons/ShareButtons';
+
 class Post extends Component {
   state = {
     post: null
@@ -66,24 +68,39 @@ class Post extends Component {
         <div className="wrapper">
           <IndexPageHeader />
           
-          <div className="section">
+          <div className="section pb-3">
             <Container>
-            <div className="author float-right">
-              <b>
-                <Link to="/">
-                  <span>{this.state.post?.user.username}</span>
-                </Link>
-                </b>, {this.state.post?.created_at}
-            </div>
-              <h5 className="category">
-                {this.state.post?.category.name}
-              </h5>
-              <h3 className="title">{this.state.post?.title}</h3>
-              <h5 className="description" dangerouslySetInnerHTML={{ __html: this.state.post?.text}}></h5>
+              
+              <Row>
+                <Col md="12">
+                  <h5 className="category pull-left">
+                    {this.state.post?.category.name}
+                  </h5>
+                  <div className="author pull-right">
+                    <b>
+                      <Link to="/">
+                        <span>{this.state.post?.user.username}</span>
+                      </Link>
+                      </b>, {this.state.post?.created_at}
+                  </div>
+                </Col>
+                
+                <Col md="12">
+                  <div className="pull-right mb-1">
+                      <ShareButtons/>
+                  </div>
+                </Col>
+                
+                <Col md="12">
+                  <h3 className="title">{this.state.post?.title}</h3>
+                </Col>
+                
+                <Col md="12" dangerouslySetInnerHTML={{ __html: this.state.post?.text}}></Col>
+              </Row>
             </Container>
           </div>
           
-          <div className="section">
+          <div className="section pt-3">
             <Container>
               <Row className="justify-content-center">
                 <Col lg="8" md="12">
