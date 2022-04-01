@@ -100,7 +100,7 @@ class Posts extends Component {
       return(
         <Col md="4" key={post.id}  onClick={() => this.clickPostHandler(post.id)} style={{cursor: 'pointer'}}>
             <Card className="card-plain card-blog">
-              <div className="postImg" style={{ backgroundImage: `url('${post.images[0]?.path}')` }}></div>
+              <div className="postImg" style={{ backgroundImage: `url('${post.image}')` }}></div>
               <div className="author float-right">
                 <b>
                   <Link to="/">
