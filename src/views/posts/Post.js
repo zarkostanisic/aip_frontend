@@ -101,15 +101,20 @@ class Post extends Component {
             </Container>
           </div>
           
-          <div className="section pt-3">
-            <Container>
-              <Row className="justify-content-center">
-                <Col lg="8" md="12">
-                  <ImageGallery items={items} />
-                </Col>
-              </Row>
-            </Container>
-          </div>
+          {items.length > 0
+            ?
+              <div className="section pt-3">
+                <Container>
+                  <Row className="justify-content-center">
+                    <Col lg="8" md="12">
+                      <ImageGallery items={items} />
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            :
+              null
+          }
           <DefaultFooter classes="footer-default"/>
         </div>
       </>
