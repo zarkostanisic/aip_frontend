@@ -18,6 +18,7 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 import ImageGallery from 'react-image-gallery';
 
 import ShareButtons from '../../components/ShareButtons/ShareButtons';
+// import Map from '../../components/Map/Map';
 
 class Post extends Component {
   state = {
