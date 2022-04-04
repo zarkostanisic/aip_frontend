@@ -18,7 +18,7 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 import ImageGallery from 'react-image-gallery';
 
 import ShareButtons from '../../components/ShareButtons/ShareButtons';
-// import Map from '../../components/Map/Map';
+import Map from '../../components/Map/Map';
 
 class Post extends Component {
   state = {
@@ -106,12 +106,25 @@ class Post extends Component {
               <div className="section pt-3">
                 <Container>
                   <Row className="justify-content-center">
-                    <Col lg="8" md="12">
+                    <Col md="12">
                       <ImageGallery items={items} />
                     </Col>
                   </Row>
                 </Container>
               </div>
+            :
+              null
+          }
+          {
+            this.state.post?.lat && this.state.post?.lng
+            ?
+            <Container>
+              <Row className="justify-content-center">
+                <Col md="12">
+                <Map lat={this.state.post?.lat} lng={this.state.post?.lng}/>
+                </Col>
+              </Row>
+            </Container>
             :
               null
           }

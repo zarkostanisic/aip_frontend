@@ -12,12 +12,6 @@ import 'leaflet/dist/leaflet.css';
 function LocationMarker(props) {
   const [position, setPosition] = useState(null)
   const [first, setFirst] = useState(true)
-  const map = useMapEvents({
-    click(e) {
-      setPosition(e.latlng);
-      props.setPositionLatLng(e.latlng);
-    }
-  });
   
   React.useEffect(() => {
     if(props.lat && props.lng && first){
