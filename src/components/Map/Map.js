@@ -33,7 +33,7 @@ function LocationMarker(props) {
 }
 
 function Map(props) {
-  const [position, setPosition] = useState({ lat: 44.787197, lng: 20.457273 });
+  const [position, setPosition] = useState({ lat: props.lat, lng: props.lng });
   const [first, setFirst] = useState(true);
   
   React.useEffect(() => {
@@ -49,7 +49,7 @@ function Map(props) {
   return (
     <MapContainer center={position} zoom={8} style={{ height: '80vh', width: '100wh' }}>
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution=''
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LocationMarker {...props}/>

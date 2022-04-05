@@ -19,6 +19,7 @@ import ImageGallery from 'react-image-gallery';
 
 import ShareButtons from '../../components/ShareButtons/ShareButtons';
 import Map from '../../components/Map/Map';
+import Modal from '../../components/Modal/Modal';
 
 class Post extends Component {
   state = {
@@ -82,12 +83,21 @@ class Post extends Component {
                       <Link to="/">
                         <span>{this.state.post?.user.username}</span>
                       </Link>
-                      </b>, {this.state.post?.created_at}
+                      </b>, {this.state.post?.created_at}, 
+                      {
+                        this.state.post?.lat && this.state.post?.lng
+                        ?
+                          <Modal>
+                            <Map lat={this.state.post?.lat} lng={this.state.post?.lng}/>
+                          </Modal>
+                        :
+                          null
+                      }
                   </div>
                 </Col>
                 
                 <Col md="12">
-                  <div className="pull-right mb-1">
+                  <div className="pull-right mb-1 mt-2">
                       <ShareButtons/>
                   </div>
                 </Col>
@@ -112,19 +122,6 @@ class Post extends Component {
                   </Row>
                 </Container>
               </div>
-            :
-              null
-          }
-          {
-            this.state.post?.lat && this.state.post?.lng
-            ?
-            <Container>
-              <Row className="justify-content-center">
-                <Col md="12">
-                <Map lat={this.state.post?.lat} lng={this.state.post?.lng}/>
-                </Col>
-              </Row>
-            </Container>
             :
               null
           }
