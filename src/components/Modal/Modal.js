@@ -44,7 +44,8 @@ class ModalClass extends Component {
             </button>
           </ModalHeader>
           <ModalBody>
-          {this.props.children}></ModalBody>
+            {this.props.children}
+          </ModalBody>
         </Modal>
       </>
     );
