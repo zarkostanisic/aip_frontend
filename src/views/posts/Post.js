@@ -64,6 +64,8 @@ class Post extends Component {
       document.title = this.state.post.title + ' | ' + this.state.post.category.name + ' | ' + getSiteName();
     }
     
+    const location = window.location.href;
+    
     return (
       <>
         <DefaultNavbar />
@@ -98,7 +100,7 @@ class Post extends Component {
                 
                 <Col md="12">
                   <div className="pull-right mb-1 mt-2">
-                      <ShareButtons/>
+                      <ShareButtons title={this.state.post?.title} description={this.state.post?.subtitle.substring(0, 200)} location={location}/>
                   </div>
                 </Col>
                 
