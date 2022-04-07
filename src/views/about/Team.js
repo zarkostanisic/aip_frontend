@@ -43,12 +43,14 @@ class Team extends Component{
         
         social_networks = keys.map((key, i) => {
           let pattern = '';
-          const value = networks[key];
+          let value = networks[key];
           
           if(key == 'viber'){
             pattern = 'viber://chat?number=';
+            value = encodeURIComponent(value);
           }else if(key == 'whatsapp'){
             pattern = 'whatsapp://send?phone=';
+            value = encodeURIComponent(value);
           }
 
           return <Button key={i}
