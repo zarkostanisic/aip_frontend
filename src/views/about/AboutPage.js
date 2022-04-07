@@ -4,9 +4,7 @@ import {getSiteName} from '../../components/Functions/Functions';
 
 // reactstrap components
 import {
-  Container,
-  Row,
-  Col
+  Container
 } from "reactstrap";
 
 // core components

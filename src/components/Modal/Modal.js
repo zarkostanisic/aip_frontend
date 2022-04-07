@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import {
-  Row,
-  Col,
   Button,
   Modal,
   ModalHeader,
-  ModalTitle,
-  ModalBody,
-  ModalFooter
+  ModalBody
 } from "reactstrap";
 
 class ModalClass extends Component {

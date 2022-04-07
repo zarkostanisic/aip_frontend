@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import {
   MapContainer,
-  Marker,
-  Popup,
   TileLayer,
-  CircleMarker,
-  useMapEvents,
+  CircleMarker
 } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 
