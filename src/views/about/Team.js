@@ -42,13 +42,20 @@ class Team extends Component{
         const keys = Object.keys(networks);
         
         social_networks = keys.map((key, i) => {
+          let pattern = '';
           const value = networks[key];
+          
+          if(key == 'viber'){
+            pattern = 'viber://chat?number=';
+          }else if(key == 'whatsapp'){
+            pattern = 'whatsapp://send?phone=';
+          }
 
           return <Button key={i}
               className="btn-icon btn-round"
               color="info"
-              href={value}
-              onClick={(e) => e.preventDefault()}
+              href={pattern + value}
+              target="_blank"
             >
               <i className={'fab fa-' + key}></i>
             </Button>;
