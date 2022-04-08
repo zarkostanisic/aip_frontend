@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {getSiteName} from '../../components/Functions/Functions';
+import API from '../../api/api';
 
 // reactstrap components
 import {
@@ -13,17 +14,28 @@ import {
   Col
 } from "reactstrap";
 
+import validation from '../../lang/sr/validation';
+
 // core components
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
+
+import SimpleReactValidator from 'simple-react-validator';
 
 class Contact extends Component {
   
   state = {
     firstFocus: false,
     emailFocus: false,
+    full_name: '',
+    email: '',
+    text: ''
   };
+  
+  handleChange=(event)=>{
+    this.setState({[event.target.name]:event.target.value });
+  } 
   
   componentDidMount(){
     
@@ -42,12 +54,43 @@ class Contact extends Component {
     document.body.classList.remove("sidebar-collapse");
   }
   
-  setFirstFocus = (value) => {
+  setFullNameFocus = (value) => {
     this.setState({firstFocus: value});
   }
   
   setEmailFocus = (value) => {
     this.setState({emailFocus: value});
+  }
+  
+  handleSend = () => {
+    if (this.validator.allValid()) {
+      const data = {
+        full_name: this.state.full_name,
+        email: this.state.email,
+        text: this.state.text
+      };
+      
+      API.post('api/app/contact')
+        .then(results => {
+          this.setState({
+              full_name: '',
+              email: '',
+              text: ''
+          });
+          
+          alert('Vaša poruka je uspešno poslata!');
+        });
+    } else {
+      this.validator.showMessages();
+
+      this.forceUpdate();
+    }
+  };
+  
+  componentWillMount() {
+    // Serbian
+    SimpleReactValidator.addLocale('sr', validation);
+    this.validator = new SimpleReactValidator({locale: 'sr'});
   }
   
   render(){
@@ -59,8 +102,8 @@ class Contact extends Component {
           
           <div className="section section-contact-us text-center">
             <Container>
-              <h2 className="title">Kontakt?</h2>
-              <p className="description">Your project is very important to us.</p>
+              <h2 className="title">Kontakt</h2>
+              <p className="description"></p>
               <Row>
                 <Col className="text-center ml-auto mr-auto" lg="6" md="8">
                   <InputGroup
@@ -74,11 +117,17 @@ class Contact extends Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="First Name..."
+                      placeholder="Ime i prezime"
                       type="text"
-                      onFocus={() => this.setFirstFocus(true)}
-                      onBlur={() => this.setFirstFocus(false)}
+                      name="full_name"
+                      onFocus={() => this.setFullNameFocus(true)}
+                      onBlur={() => this.setFullNameFocus(false)}
+                      value={this.state.full_name} 
+                      onChange={this.handleChange}
                     ></Input>
+                  </InputGroup>
+                  <InputGroup>
+                    {this.validator.message('ime i prezime', this.state.full_name, 'required')}
                   </InputGroup>
                   <InputGroup
                     className={
@@ -91,29 +140,39 @@ class Contact extends Component {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Email..."
+                      placeholder="Email"
                       type="text"
                       name="email"
                       onFocus={() => this.setEmailFocus(true)}
                       onBlur={() => this.setEmailFocus(false)}
+                      value={this.state.email} 
+                      onChange={this.handleChange}
                     ></Input>
+                  </InputGroup>
+                  <InputGroup>
+                    {this.validator.message('email', this.state.email, 'required|email')}
                   </InputGroup>
                   <div className="textarea-container">
                     <Input
                       cols="80"
-                      name="name"
-                      placeholder="Type a message..."
                       rows="4"
+                      placeholder="Tekst"
                       type="textarea"
+                      name="text"
+                      value={this.state.text} 
+                      onChange={this.handleChange}
                     ></Input>
+                    <InputGroup>
+                      {this.validator.message('tekst', this.state.text, 'required')}
+                    </InputGroup>
                   </div>
                   <div className="send-button">
                     <Button
+                      type="button"
                       block
                       className="btn-round"
                       color="info"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      onClick={this.handleSend}
                       size="lg"
                     >
                       Send Message
