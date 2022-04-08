@@ -79,6 +79,8 @@ class Contact extends Component {
           });
           
           alert('Vaša poruka je uspešno poslata!');
+          
+          window.location.reload();
         });
     } else {
       this.validator.showMessages();
