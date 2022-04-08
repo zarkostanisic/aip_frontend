@@ -70,7 +70,7 @@ class Contact extends Component {
         text: this.state.text
       };
       
-      API.post('api/app/contact')
+      API.post('api/app/contact', data)
         .then(results => {
           this.setState({
               full_name: '',
@@ -152,7 +152,7 @@ class Contact extends Component {
                   <InputGroup>
                     {this.validator.message('email', this.state.email, 'required|email')}
                   </InputGroup>
-                  <div className="textarea-container">
+                  <div className="textarea-container ">
                     <Input
                       cols="80"
                       rows="4"
@@ -162,7 +162,7 @@ class Contact extends Component {
                       value={this.state.text} 
                       onChange={this.handleChange}
                     ></Input>
-                    <InputGroup>
+                    <InputGroup className="pl-0 pt-2">
                       {this.validator.message('tekst', this.state.text, 'required')}
                     </InputGroup>
                   </div>
