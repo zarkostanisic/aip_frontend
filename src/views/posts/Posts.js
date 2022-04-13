@@ -91,8 +91,8 @@ class Posts extends Component {
     document.body.classList.remove("sidebar-collapse");
   }
   
-  clickPostHandler = (id) => {
-    this.props.history.push('/post/' + id);
+  clickPostHandler = (id, slug) => {
+    this.props.history.push('/post/' + id + '/' + slug);
   }
   
   render(){
@@ -101,7 +101,7 @@ class Posts extends Component {
     if(this.state.posts.length > 0){
       posts = this.state.posts.map((post) => {
         return(
-          <Col md="4" key={post.id}  onClick={() => this.clickPostHandler(post.id)} style={{cursor: 'pointer'}}>
+          <Col md="4" key={post.id}  onClick={() => this.clickPostHandler(post.id, post.slug)} style={{cursor: 'pointer'}}>
               <Card className="card-plain card-blog">
                 <div className="postImg" style={{ backgroundImage: `url('${post.image}')` }}></div>
                 <div className="author float-right">

@@ -69,7 +69,7 @@ ReactDOM.render(
       />
       
       <Route
-        path="/post/:id"
+        path="/post/:id/:slug?"
         render={(props) => <Post {...props} />}
       />
       
