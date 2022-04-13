@@ -35,6 +35,7 @@ import Posts from "views/posts/Posts";
 import AboutPage from "views/about/AboutPage";
 import Post from "views/posts/Post";
 import Contact from "views/contact/Contact";
+import Error404 from "views/errors/Error404";
 
 const store = createStore(
    reducer,
@@ -75,6 +76,11 @@ ReactDOM.render(
       <Route
         path="/post/:id"
         render={(props) => <Post {...props} />}
+      />
+      
+      <Route
+        path="/404"
+        render={(props) => <Error404 {...props} />}
       />
       
       <Redirect to="/index" />

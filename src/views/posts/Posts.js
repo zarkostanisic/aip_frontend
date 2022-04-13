@@ -96,34 +96,38 @@ class Posts extends Component {
   }
   
   render(){
-    const posts = this.state.posts.map((post) => {
-      return(
-        <Col md="4" key={post.id}  onClick={() => this.clickPostHandler(post.id)} style={{cursor: 'pointer'}}>
-            <Card className="card-plain card-blog">
-              <div className="postImg" style={{ backgroundImage: `url('${post.image}')` }}></div>
-              <div className="author float-right">
-                <b>
-                  <Link to="/">
-                    <span>{post.user.username}</span>
-                  </Link>
-                  </b>, {post.created_at}
-              </div>
-              <CardBody>
-                <h6 className="category">
-                  {post.category.name}
-                </h6>
-                
-                <CardTitle tag="h5">{post.title}</CardTitle>
-                <CardText dangerouslySetInnerHTML={{ __html: post.subtitle.substring(0, 200)}}>
-                </CardText>
-              </CardBody>
-              <CardFooter>
-                
-              </CardFooter>
-            </Card>
-        </Col>
-      );
-    });
+    let posts = <h5>Trenutno nema objava za prikazivanje.</h5>;
+    
+    if(this.state.posts.length > 0){
+      posts = this.state.posts.map((post) => {
+        return(
+          <Col md="4" key={post.id}  onClick={() => this.clickPostHandler(post.id)} style={{cursor: 'pointer'}}>
+              <Card className="card-plain card-blog">
+                <div className="postImg" style={{ backgroundImage: `url('${post.image}')` }}></div>
+                <div className="author float-right">
+                  <b>
+                    <Link to="/">
+                      <span>{post.user.username}</span>
+                    </Link>
+                    </b>, {post.created_at}
+                </div>
+                <CardBody>
+                  <h6 className="category">
+                    {post.category.name}
+                  </h6>
+                  
+                  <CardTitle tag="h5">{post.title}</CardTitle>
+                  <CardText dangerouslySetInnerHTML={{ __html: post.subtitle.substring(0, 200)}}>
+                  </CardText>
+                </CardBody>
+                <CardFooter>
+                  
+                </CardFooter>
+              </Card>
+          </Col>
+        );
+      });
+    }
     
     return (
       <>
