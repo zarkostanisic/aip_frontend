@@ -54,12 +54,7 @@ ReactDOM.render(
       />
       
       <Route
-        path="/posts/:slug"
-        render={(props) => <Posts {...props} />}
-      />
-      
-      <Route
-        path="/posts"
+        path="/posts/:slug?"
         render={(props) => <Posts {...props} />}
       />
       
