@@ -30,7 +30,7 @@ import "assets/demo/nucleo-icons-page-styles.css?v=1.5.0";
 import "./index.css";
 // pages for this kit
 import IndexPage from "views/index/IndexPage";
-import LoginPage from "views/auth/LoginPage";
+// import LoginPage from "views/auth/LoginPage";
 import Posts from "views/posts/Posts";
 import AboutPage from "views/about/AboutPage";
 import Post from "views/posts/Post";
@@ -48,10 +48,10 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/index" render={(props) => <IndexPage {...props} />} />
-      <Route
+      {/*<Route
         path="/login"
         render={(props) => <LoginPage {...props} />}
-      />
+      />*/}
       
       <Route
         path="/posts/:slug?"
