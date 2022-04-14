@@ -15,19 +15,3 @@ export const getMainLinks = () => {
     {contact: {name: 'Kontakt', path: '/contact'}}
   ];
 };
-
-// <li>
-//   <Link to="/">AIP</Link>
-// </li>
-// 
-// <li>
-//   <Link to="/posts">Blog</Link>
-// </li>
-// 
-// <li>
-//   <Link to="/about">O nama</Link>
-// </li>
-// 
-// <li>
-//   <Link to="/contact">Kontakt</Link>
-// </li>
