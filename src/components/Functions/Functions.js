@@ -4,7 +4,7 @@ export const getSiteName = () => {
 };
 
 export const getSlogan = () => {
-  return 'Slogan?';
+  return 'Zajedno do vrha <i class="fa fa-regular fa-mountain"></i>';
 };
 
 export const getMainLinks = () => {

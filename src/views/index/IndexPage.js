@@ -70,7 +70,7 @@ class IndexPage extends Component {
                           "url(" + require("assets/img/login.jpg").default + ")",
                       }}
                     >
-                      <p className="blockquote blockquote-info">
+                      <p className="blockquote blockquote-dark">
                         "Over the span of the satellite record, Arctic sea ice has
                         been declining significantly, while sea ice in the
                         Antarctichas increased very slightly" <br></br>

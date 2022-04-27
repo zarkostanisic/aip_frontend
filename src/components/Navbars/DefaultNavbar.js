@@ -15,13 +15,13 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
+const navbarDefaultColor = 'dark';
+const navbarTransparentColor = 'navbar-transparent';  
+
 class DefaultNavbar extends Component {
-  state = {
-    collapseOpen: false
-  }
   
   state = {
-    navbarColor: 'navbar-transparent',
+    navbarColor: navbarTransparentColor,
     collapseOpen: false,
     categories: []
   }
@@ -43,14 +43,14 @@ class DefaultNavbar extends Component {
       document.body.scrollTop > 399
     ) {
       this.setState({
-        navbarColor: ''
+        navbarColor: navbarDefaultColor
       });
     } else if (
       document.documentElement.scrollTop < 400 ||
       document.body.scrollTop < 400
     ) {
       this.setState({
-        navbarColor: 'navbar-transparent'
+        navbarColor: navbarTransparentColor
       });
     }
   };
@@ -107,13 +107,14 @@ class DefaultNavbar extends Component {
             }}
           />
         ) : null}
-        <Navbar className={"fixed-top " + this.state.navbarColor} color="info" expand="lg">
+        <Navbar className={"fixed-top " + this.state.navbarColor} color={navbarDefaultColor} expand="lg">
           <Container>
             <div className="navbar-translate">
               <NavbarBrand to="/" tag={Link}
                 id="navbar-brand"
               >
-                AIP
+                
+                <img src={require("assets/img/logo.png").default} width="46" alt=""/>
               </NavbarBrand>
               <button
                 className="navbar-toggler navbar-toggler"

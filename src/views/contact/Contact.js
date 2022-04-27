@@ -173,7 +173,7 @@ class Contact extends Component {
                       type="button"
                       block
                       className="btn-round"
-                      color="info"
+                      color="dark"
                       onClick={this.handleSend}
                       size="lg"
                     >

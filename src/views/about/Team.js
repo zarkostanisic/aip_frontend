@@ -55,7 +55,7 @@ class Team extends Component{
 
           return <Button key={i}
               className="btn-icon btn-round"
-              color="info"
+              color="dark"
               href={pattern + value}
               target="_blank"
             >

@@ -190,7 +190,7 @@ class LoginPage extends Component {
                       <Button
                         block
                         className="btn-round"
-                        color="info"
+                        color="dark"
                         href="#pablo"
                         onClick={this.handleLogin}
                         size="lg"

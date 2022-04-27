@@ -20,7 +20,7 @@ class IndexHeader extends Component{
           ></div>
           <div className="content-center">
             <Container>
-              <h1 className="title">{getSlogan()}</h1>
+              <h1 className="title" dangerouslySetInnerHTML={{ __html: getSlogan()}}></h1>
             </Container>
           </div>
         </div>
