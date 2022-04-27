@@ -125,9 +125,6 @@ class Contact extends Component {
                 <Col className="text-center ml-auto mr-auto" lg="6" md="8">
                   <Alert color="success" isOpen={this.state.visible}>
                     <div className="container">
-                      <div className="alert-icon">
-                        <i className="now-ui-icons ui-2_like"></i>
-                      </div>
                       Vaša poruka je uspešno poslata!
                       <button
                         type="button"
@@ -213,11 +210,10 @@ class Contact extends Component {
                       { this.state.loading 
                         ?
                           <div class="spinner-border spinner-border-sm" role="status">
-                            <span class="sr-only">Loading...</span>
                           </div>
                         : null
                       }
-                      Send Message
+                      Pošalji poruku
                     </Button>
                   </div>
                 </Col>
