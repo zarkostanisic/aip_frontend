@@ -47,7 +47,7 @@ ReactDOM.render(
   <Provider store = {store}>
   <BrowserRouter>
     <Switch>
-      <Route path="/index" render={(props) => <IndexPage {...props} />} />
+      
       {/*<Route
         path="/login"
         render={(props) => <LoginPage {...props} />}
@@ -78,8 +78,7 @@ ReactDOM.render(
         render={(props) => <Error404 {...props} />}
       />
       
-      <Redirect to="/index" />
-      <Redirect from="/" to="/index" />
+      <Route path="/" render={(props) => <IndexPage {...props} />} />
     </Switch>
   </BrowserRouter>
   </Provider>,
