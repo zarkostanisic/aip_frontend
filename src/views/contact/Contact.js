@@ -11,7 +11,8 @@ import {
   InputGroup,
   Container,
   Row,
-  Col
+  Col,
+  Alert
 } from "reactstrap";
 
 import validation from '../../lang/sr/validation';
@@ -24,18 +25,28 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 import SimpleReactValidator from 'simple-react-validator';
 
 class Contact extends Component {
+    constructor(props) {
+      super(props);
+      this.onDismiss = this.onDismiss.bind(this);
+  }
   
   state = {
     firstFocus: false,
     emailFocus: false,
     full_name: '',
     email: '',
-    text: ''
+    text: '',
+    loading: false,
+    visible: false
   };
   
   handleChange=(event)=>{
     this.setState({[event.target.name]:event.target.value });
   } 
+  
+  onDismiss(){
+      this.setState({visible: !this.state.visible});
+  }
   
   componentDidMount(){
     
@@ -63,7 +74,11 @@ class Contact extends Component {
   }
   
   handleSend = () => {
+    this.setState({visible: false});
+    
     if (this.validator.allValid()) {
+      this.setState({loading: true});
+      
       const data = {
         full_name: this.state.full_name,
         email: this.state.email,
@@ -77,10 +92,10 @@ class Contact extends Component {
               email: '',
               text: ''
           });
+        
+          this.setState({loading: false, visible: true});
           
-          alert('Vaša poruka je uspešno poslata!');
-          
-          window.location.reload();
+          this.forceUpdate(); 
         });
     } else {
       this.validator.showMessages();
@@ -108,6 +123,24 @@ class Contact extends Component {
               <p className="description"></p>
               <Row>
                 <Col className="text-center ml-auto mr-auto" lg="6" md="8">
+                  <Alert color="success" isOpen={this.state.visible}>
+                    <div className="container">
+                      <div className="alert-icon">
+                        <i className="now-ui-icons ui-2_like"></i>
+                      </div>
+                      Vaša poruka je uspešno poslata!
+                      <button
+                        type="button"
+                        className="close"
+                        aria-label="Close"
+                        onClick={this.onDismiss}
+                      >
+                        <span aria-hidden="true">
+                          <i className="now-ui-icons ui-1_simple-remove"></i>
+                        </span>
+                      </button>
+                    </div>
+                  </Alert>
                   <InputGroup
                     className={
                       "input-lg" + (this.state.firstFocus ? " input-group-focus" : "")
@@ -171,12 +204,19 @@ class Contact extends Component {
                   <div className="send-button">
                     <Button
                       type="button"
-                      block
                       className="btn-round"
                       color="dark"
                       onClick={this.handleSend}
                       size="lg"
+                      disabled={this.state.loading}
                     >
+                      { this.state.loading 
+                        ?
+                          <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+                        : null
+                      }
                       Send Message
                     </Button>
                   </div>
