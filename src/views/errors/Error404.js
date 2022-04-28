@@ -1,27 +1,15 @@
 import React, {Component} from "react";
 import {getSiteName} from '../../components/Functions/Functions';
-import API from '../../api/api';
 
 // reactstrap components
 import {
-  Button,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col
+  Container
 } from "reactstrap";
-
-import validation from '../../lang/sr/validation';
 
 // core components
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
-
-import SimpleReactValidator from 'simple-react-validator';
 
 import {Helmet} from 'react-helmet';
 
