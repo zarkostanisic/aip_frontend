@@ -59,14 +59,14 @@ class AboutPageHeader extends Component {
                 <h2>{this.state.statistics?.posts}</h2>
                 <p>Objava</p>
               </div>
-              <div className="social-description">
+              {/*<div className="social-description">
                 <h2>{this.state.statistics?.comments}</h2>
                 <p>Komentara</p>
-              </div>
-              {/*<div className="social-description">
+              </div>*/}
+              <div className="social-description">
                 <h2>{this.state.statistics?.images}</h2>
                 <p>Slika</p>
-              </div>*/}
+              </div>
             </div>
           </Container>
         </div>
