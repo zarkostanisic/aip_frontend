@@ -212,7 +212,7 @@ class Contact extends Component {
                     >
                       { this.state.loading 
                         ?
-                          <div class="spinner-border spinner-border-sm" role="status">
+                          <div className="spinner-border spinner-border-sm" role="status">
                             <span className="sr-only">Loading...</span>
                           </div>
                         : null
