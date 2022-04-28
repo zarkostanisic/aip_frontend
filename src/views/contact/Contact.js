@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 
 import validation from '../../lang/sr/validation';
+import {Helmet} from 'react-helmet';
 
 // core components
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
@@ -37,7 +38,8 @@ class Contact extends Component {
     email: '',
     text: '',
     loading: false,
-    visible: false
+    sent: false,
+    pageTitle: 'Kontakt | ' + getSiteName()
   };
   
   handleChange=(event)=>{
@@ -45,12 +47,10 @@ class Contact extends Component {
   } 
   
   onDismiss(){
-      this.setState({visible: !this.state.visible});
+      this.setState({sent: !this.state.sent});
   }
   
   componentDidMount(){
-    
-    document.title =  'Kontakt | ' + getSiteName();
     
     document.body.classList.add("contact-page");
     document.body.classList.add("sidebar-collapse");
@@ -74,7 +74,7 @@ class Contact extends Component {
   }
   
   handleSend = () => {
-    this.setState({visible: false});
+    this.setState({sent: false});
     
     if (this.validator.allValid()) {
       this.setState({loading: true});
@@ -93,7 +93,7 @@ class Contact extends Component {
               text: ''
           });
         
-          this.setState({loading: false, visible: true});
+          this.setState({loading: false, sent: true});
           
           this.forceUpdate(); 
         });
@@ -113,6 +113,9 @@ class Contact extends Component {
   render(){
     return (
       <>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
         <DefaultNavbar />
         <div className="wrapper">
           <IndexPageHeader />
@@ -123,7 +126,7 @@ class Contact extends Component {
               <p className="description"></p>
               <Row>
                 <Col className="text-center ml-auto mr-auto" lg="6" md="8">
-                  <Alert color="success" isOpen={this.state.visible}>
+                  <Alert color="success" isOpen={this.state.sent}>
                     <div className="container">
                       Vaša poruka je uspešno poslata!
                       <button

@@ -28,13 +28,15 @@ import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 import SimpleReactValidator from 'simple-react-validator';
+import {Helmet} from 'react-helmet';
 
 class LoginPage extends Component {
   state = {
     username: '',
     password: '',
     usernameFocus: false,
-    passwordFocus: false
+    passwordFocus: false,
+    pageTitle: 'Login | ' + getSiteName()
   }
   
   handleLogin = () => {
@@ -65,7 +67,6 @@ class LoginPage extends Component {
   } 
   
   componentDidMount(){
-    document.title =  'Login | ' + getSiteName();
     
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
@@ -112,6 +113,9 @@ class LoginPage extends Component {
     
     return (
       <>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
         <DefaultNavbar />
         <div className="page-header clear-filter" filter-color="blue">
           <div

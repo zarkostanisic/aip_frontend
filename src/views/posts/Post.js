@@ -21,9 +21,12 @@ import ShareButtons from '../../components/ShareButtons/ShareButtons';
 import Map from '../../components/Map/Map';
 import Modal from '../../components/Modal/Modal';
 
+import {Helmet} from 'react-helmet';
+
 class Post extends Component {
   state = {
-    post: null
+    post: null,
+    pageTitle: ''
   }
   
   getPost = () => {
@@ -34,10 +37,13 @@ class Post extends Component {
         this.setState({
           post: result.data.data
         });
+        
+        this.setState({pageTitle: result.data.data.title + ' | ' + result.data.data.category.name + ' | ' + getSiteName()});
+
       });
   } 
   
-  componentDidMount(){
+  componentWillMount(){
     
     this.getPost();
     
@@ -60,14 +66,15 @@ class Post extends Component {
       items = this.state.post.images.map((image) => {
         return {original: image.path, thumbnail: image.path};
       });
-      
-      document.title = this.state.post.title + ' | ' + this.state.post.category.name + ' | ' + getSiteName();
     }
     
     const location = window.location.href;
     
     return (
       <>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
         <DefaultNavbar />
         <div className="wrapper">
           <IndexPageHeader />

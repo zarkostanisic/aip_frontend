@@ -48,6 +48,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       
+      <Route path="/" exact render={(props) => <IndexPage {...props} />} />
       {/*<Route
         path="/login"
         render={(props) => <LoginPage {...props} />}
@@ -78,7 +79,7 @@ ReactDOM.render(
         render={(props) => <Error404 {...props} />}
       />
       
-      <Route path="/" render={(props) => <IndexPage {...props} />} />
+      <Redirect to="/" />
     </Switch>
   </BrowserRouter>
   </Provider>,

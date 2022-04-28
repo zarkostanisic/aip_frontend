@@ -22,6 +22,8 @@ import IndexPageHeader from "components/Headers/IndexPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 import Spinner from '../../components/Spinner/Spinner';
 
+import {Helmet} from 'react-helmet';
+
 class Posts extends Component {
   state = {
     posts: [],
@@ -29,7 +31,8 @@ class Posts extends Component {
     total: 0,
     perPage: 12,
     pageRragneDisplayed: 3,
-    loading: false
+    loading: false,
+    pageTitle: ''
   };
   
   getPosts = (page = 1) => {
@@ -50,9 +53,9 @@ class Posts extends Component {
         this.setState({loading: false});
         
         if(this.props.match.params.slug && this.state.posts.length > 0){
-          document.title = this.state.posts[0].category.name + ' | Blog | ' + getSiteName();
+          this.setState({pageTitle: this.state.posts[0].category.name + ' | Blog | ' + getSiteName()});
         }else{
-          document.title = 'Blog | ' + getSiteName();
+          this.setState({pageTitle: 'Blog | ' + getSiteName()});
         }
       });
   }  
@@ -131,6 +134,9 @@ class Posts extends Component {
     
     return (
       <>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
         <DefaultNavbar />
         <div className="wrapper">
           <IndexPageHeader />

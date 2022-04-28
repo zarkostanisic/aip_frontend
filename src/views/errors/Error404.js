@@ -23,12 +23,14 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 import SimpleReactValidator from 'simple-react-validator';
 
+import {Helmet} from 'react-helmet';
+
 class Contact extends Component {
-  
+  state = {
+    pageTitle: '404 | ' + getSiteName()
+  };
   
   componentDidMount(){
-    
-    document.title =  '404 | ' + getSiteName();
     
     document.body.classList.add("contact-page");
     document.body.classList.add("sidebar-collapse");
@@ -46,6 +48,9 @@ class Contact extends Component {
   render(){
     return (
       <>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
         <DefaultNavbar />
         <div className="wrapper">
           <IndexPageHeader />

@@ -13,7 +13,12 @@ import AboutPageHeader from "components/Headers/AboutPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 import Team from './Team';
 
+import {Helmet} from 'react-helmet';
+
 class AboutPage extends Component {
+  state = {
+    pageTitle: 'O nama | ' + getSiteName()
+  };
   
   getTeam = () => {
     this.setState({loading: true});
@@ -29,8 +34,6 @@ class AboutPage extends Component {
   } 
   
   componentDidMount(){
-    
-    document.title =  'O nama | ' + getSiteName();
     
     document.body.classList.add("about-page");
     document.body.classList.add("sidebar-collapse");
@@ -49,6 +52,9 @@ class AboutPage extends Component {
   render(){
     return (
       <>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
         <DefaultNavbar />
         <div className="wrapper">
           <AboutPageHeader />

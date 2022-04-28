@@ -8,6 +8,8 @@ import {
   Col
 } from "reactstrap";
 
+import {Helmet} from 'react-helmet';
+
 // core components
 import DefaultNavbar from "components/Navbars/DefaultNavbar.js";
 import IndexPageHeader from "components/Headers/IndexPageHeader.js";
@@ -17,11 +19,11 @@ class IndexPage extends Component {
   
   state = {
     firstFocus: false,
-    emailFocus: false
+    emailFocus: false,
+    pageTitle: getSiteName()
   };
   
   componentDidMount(){
-    document.title =  getSiteName();
     
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -46,6 +48,9 @@ class IndexPage extends Component {
   render(){
     return (
       <>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
         <DefaultNavbar />
         <div className="wrapper">
           <IndexPageHeader />
