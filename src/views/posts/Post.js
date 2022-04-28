@@ -125,7 +125,7 @@ class Post extends Component {
               <div className="section pt-3">
                 <Container>
                   <Row className="justify-content-center">
-                    <Col md="12">
+                    <Col md="12" sm="12" lg="12" xl="12">
                       <ImageGallery items={items} />
                     </Col>
                   </Row>
