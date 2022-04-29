@@ -37,6 +37,8 @@ import Post from "views/posts/Post";
 import Contact from "views/contact/Contact";
 import Error404 from "views/errors/Error404";
 
+import ScrollToTop from "react-scroll-to-top";
+
 const store = createStore(
    reducer,
    window.__REDUX_DEVTOOLS_EXTENSION__ && 
@@ -45,6 +47,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store = {store}>
+  <ScrollToTop smooth style={{zIndex: 1000}}/>
   <BrowserRouter>
     <Switch>
       

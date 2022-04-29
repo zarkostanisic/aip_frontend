@@ -23,7 +23,8 @@ class DefaultNavbar extends Component {
   state = {
     navbarColor: navbarTransparentColor,
     collapseOpen: false,
-    categories: []
+    categories: [],
+    negativeLogo: false
   }
   
   getCategories = (page = 1) => {
@@ -43,14 +44,16 @@ class DefaultNavbar extends Component {
       document.body.scrollTop > 399
     ) {
       this.setState({
-        navbarColor: navbarDefaultColor
+        navbarColor: navbarDefaultColor,
+        negativeLogo: true
       });
     } else if (
       document.documentElement.scrollTop < 400 ||
       document.body.scrollTop < 400
     ) {
       this.setState({
-        navbarColor: navbarTransparentColor
+        navbarColor: navbarTransparentColor,
+        negativeLogo: false
       });
     }
   };
@@ -114,7 +117,7 @@ class DefaultNavbar extends Component {
                 id="navbar-brand"
               >
                 
-                <img src={require("assets/img/logo.png").default} width="46" alt=""/>
+                <img src={require(this.state.negativeLogo ? "assets/img/logo.svg" : "assets/img/logo-negative.svg").default} width="46" alt=""/>
               </NavbarBrand>
               <button
                 className="navbar-toggler navbar-toggler"

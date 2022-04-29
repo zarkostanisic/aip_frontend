@@ -48,7 +48,7 @@ class AboutPageHeader extends Component {
                   <div>
                     <img style={{width: "40%"}}
                       alt="..."
-                      src={require("assets/img/logo.png").default}
+                      src={require("assets/img/logo-metal.png").default}
                     ></img>
                   </div>
                 </CardHeader>
