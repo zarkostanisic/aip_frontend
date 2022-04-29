@@ -22,14 +22,17 @@ import Map from '../../components/Map/Map';
 import Modal from '../../components/Modal/Modal';
 
 import {Helmet} from 'react-helmet';
+import Spinner from '../../components/Spinner/Spinner';
 
 class Post extends Component {
   state = {
     post: null,
-    pageTitle: ''
+    pageTitle: '',
+    loading: false,
   }
   
   getPost = () => {
+    this.setState({loading: true});
     
     API.get('api/app/post/' + this.props.match.params.id)
       .then(result => {
@@ -38,12 +41,14 @@ class Post extends Component {
           post: result.data.data
         });
         
+        this.setState({loading: false});
+        
         this.setState({pageTitle: result.data.data.title + ' | ' + result.data.data.category.name + ' | ' + getSiteName()});
 
       });
   } 
   
-  componentWillMount(){
+  componentDidMount(){
     
     this.getPost();
     
@@ -81,42 +86,51 @@ class Post extends Component {
           
           <div className="section pb-3">
             <Container>
-              
-              <Row>
-                <Col md="12">
-                  <h5 className="category pull-left">
-                    {this.state.post?.category.name}
-                  </h5>
-                  <div className="author pull-right">
-                    <b>
-                      <Link to="/">
-                        <span>{this.state.post?.user.username}</span>
-                      </Link>
-                      </b>, {this.state.post?.created_at}, 
-                      {
-                        this.state.post?.lat && this.state.post?.lng
-                        ?
-                          <Modal>
-                            <Map lat={this.state.post?.lat} lng={this.state.post?.lng}/>
-                          </Modal>
-                        :
-                          null
-                      }
-                  </div>
-                </Col>
-                
-                <Col md="12">
-                  <div className="pull-right mb-1 mt-2">
-                      <ShareButtons title={this.state.post?.title} description={this.state.post?.subtitle.substring(0, 200)} location={location}/>
-                  </div>
-                </Col>
-                
-                <Col md="12">
-                  <h3 className="title">{this.state.post?.title}</h3>
-                </Col>
-                
-                <Col md="12" dangerouslySetInnerHTML={{ __html: this.state.post?.text}}></Col>
-              </Row>
+              {
+                this.state.loading
+                ?
+                  <Row>
+                    <Col md="12">
+                      <Spinner/>
+                    </Col>
+                  </Row>
+                :
+                  <Row>
+                    <Col md="12">
+                      <h5 className="category pull-left">
+                        {this.state.post?.category.name}
+                      </h5>
+                      <div className="author pull-right">
+                        <b>
+                          <Link to="/">
+                            <span>{this.state.post?.user.username}</span>
+                          </Link>
+                          </b>, {this.state.post?.created_at}, 
+                          {
+                            this.state.post?.lat && this.state.post?.lng
+                            ?
+                              <Modal>
+                                <Map lat={this.state.post?.lat} lng={this.state.post?.lng}/>
+                              </Modal>
+                            :
+                              null
+                          }
+                      </div>
+                    </Col>
+                    
+                    <Col md="12">
+                      <div className="pull-right mb-1 mt-2">
+                          <ShareButtons title={this.state.post?.title} description={this.state.post?.subtitle.substring(0, 200)} location={location}/>
+                      </div>
+                    </Col>
+                    
+                    <Col md="12">
+                      <h3 className="title">{this.state.post?.title}</h3>
+                    </Col>
+                    
+                    <Col md="12" dangerouslySetInnerHTML={{ __html: this.state.post?.text}}></Col>
+                  </Row>
+                }
             </Container>
           </div>
           
