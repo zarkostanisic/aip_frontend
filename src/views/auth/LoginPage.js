@@ -134,7 +134,7 @@ class LoginPage extends Component {
                       <div>
                         <img style={{width: "40%"}}
                           alt="..."
-                          src={require("assets/img/logo.png").default}
+                          src={require("assets/img/logo.svg").default}
                         ></img>
                       </div>
                     </CardHeader>
@@ -161,7 +161,7 @@ class LoginPage extends Component {
                         ></Input>
                       </InputGroup>
                       <InputGroup>
-                        {this.validator.message('username', this.state.username, 'required|alpha')}
+                        {this.validator.message('korisničko ime', this.state.username, 'required|alpha')}
                       </InputGroup>
                       <InputGroup
                         className={
@@ -185,7 +185,7 @@ class LoginPage extends Component {
                         ></Input>
                       </InputGroup>
                       <InputGroup>
-                        {this.validator.message('password', this.state.password, 'required|alpha_num')}
+                        {this.validator.message('lozinka', this.state.password, 'required|alpha_num')}
                       </InputGroup>
                       <InputGroup>
                       </InputGroup>
