@@ -47,7 +47,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store = {store}>
-  <ScrollToTop smooth style={{zIndex: 1000}}/>
+  <ScrollToTop smooth style={{zIndex: 1000, bottom: '60px', right: '30px'}}/>
   <BrowserRouter>
     <Switch>
       

@@ -117,7 +117,10 @@ class DefaultNavbar extends Component {
                 id="navbar-brand"
               >
                 
-                <img src={require(this.state.negativeLogo ? "assets/img/logo.svg" : "assets/img/logo-negative.svg").default} width="46" alt=""/>
+                <img src={require(this.state.negativeLogo ? "assets/img/logo.svg" : "assets/img/logo-negative.svg").default}
+                 width="46"
+                 alt=""
+                />
               </NavbarBrand>
               <button
                 className="navbar-toggler navbar-toggler"

@@ -33,8 +33,13 @@ class DefaultFooter extends Component {
             </nav>
             <div className="copyright" id="copyright">
               © {new Date().getFullYear()},
-              <Link to="/">&nbsp;AIP</Link>
-              .
+              <Link to="/">
+                <img
+                  alt="Avanturisti izazovne prirode"
+                  src={require("assets/img/logo-positive.svg").default} 
+                  width="46"
+                />
+              </Link>
             </div>
           </Container>
         </footer>
